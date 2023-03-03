@@ -2,19 +2,19 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
+
 <header>
-        
+    @await Html.PartialAsync("Navbar")
 </header>
 
 <main>
-    @RenderBody()    
+    @RenderBody()
 </main>
 
-<footer>
-    
-</footer>
+@await Html.PartialAsync("Footer")
 
 </body>
 </html>
