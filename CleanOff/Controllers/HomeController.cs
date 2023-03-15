@@ -9,4 +9,14 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    public IActionResult SignUp()
+    {
+        return Ok();
+    }
+
+    public IActionResult Login()
+    {
+        return Ok();
+    }
 }
