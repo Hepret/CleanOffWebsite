@@ -36,17 +36,17 @@ body {
     padding: 15px;
 }
 
-    .form-signin .form-floating:focus-within {
-        z-index: 2;
-    }
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
 
-    .form-signin input[type="email"] {
-        margin-bottom: -1px;
-    }
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+}
 
-    .form-signin input[type="password"] {
-        margin-bottom: 10px;
-    }
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+}
 
 /*.login, .registration {
     display: block;
@@ -58,4 +58,9 @@ body {
     transition: opacity 0.5s ease-in-out;
 }
 
-/*ыыыыыы*/
+.new-user:hover {
+    color: #ffffff;
+    background-color:  #0d6efd !important;
+}
+
+
