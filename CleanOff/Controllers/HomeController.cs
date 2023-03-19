@@ -17,6 +17,6 @@ public class HomeController : Controller
 
     public IActionResult Login()
     {
-        return View("login");
+        return Ok();
     }
 }
