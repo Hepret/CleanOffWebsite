@@ -14,7 +14,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\js" />
+      <PackageReference Include="bootstrap" Version="5.2.3" />
+      <PackageReference Include="jQuery" Version="3.6.4" />
     </ItemGroup>
 
 </Project>

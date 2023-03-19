@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<link href="../css/login.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="../js/loginScript.js"></script>
+<html lang="ru">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вход в личный кабинет</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class="text-center">
+    <main class="form-signin w-100 m-auto">
+        <form id="login">
+            <div>
+                <h1 class="h3 mb-3 fw-normal">Вы уже смешарик?</h1>
+
+                <div class="form-floating">
+                    <input type="email" class="form-control mb-3 border-primary" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control border-primary" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Пароль</label>
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Запомнить меня
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+                <button onclick="switchForms()" class="w-100 btn btn-lg btn-outline-primary mt-3" type="button">Нет, я новенький</button>
+
+            </div>
+        </form>
+
+        <form id="registration" style="display: none;">
+            <div>
+                <h1 class="h3 mb-3 fw-normal">Стань смешариком прямо сейчас</h1>
+
+                <div class="form-floating">
+                    <input type="text" aria-label="Имя" class="form-control border-primary  w-100 rounded-1 mt-1">
+                    <label for="floatingInput">Имя</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" aria-label="Фамилия" class="form-control border-primary  w-100 rounded-1 mt-1">
+                    <label for="floatingInput">Фамилия</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="email" class="form-control mb-3 border-primary mt-3" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control border-primary" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Пароль</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary mt-3" type="button">Зарегестрироваться</button>
+                <button onclick="switchFormsback()" type="button" class="btn btn-outline-secondary mt-3">Вспомнил, я всё таки смешарик</button>
+            </div>
+        </form>
+
+
+
+
+    </main>
+</body>
+
+</html>
