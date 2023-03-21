@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Service settings
 builder.Services.AddControllersWithViews();
 builder.Configuration.AddJsonFile("connection_strings.json");
-builder.Services.AddDbContext<DataContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
