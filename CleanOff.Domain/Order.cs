@@ -1,8 +1,13 @@
-﻿namespace CleanOff.Domain;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CleanOff.Domain;
 
 public class Order
 {
-    public int Id { get; set; }
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key]
+    public Guid OrderId { get; set; }
     public OrderState OrderState { get; set; }
     public Client Client { get; set; } = null!;
     public Employee Employee { get; set; } = null!;
