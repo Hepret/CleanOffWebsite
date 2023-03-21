@@ -1,43 +1,16 @@
 ﻿using CleanOff.Domain;
+using CleanOff.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanOff.Controllers;
 
-public class ApiController : Controller
+public class ApiController : ControllerBase
 {
-    public IActionResult Login()
-    {
-        return BadRequest();
-    }
+    private readonly ApplicationDbContext _dbContext;
 
-    public IActionResult Register()
+    public ApiController(ApplicationDbContext dbContext)
     {
-        return BadRequest();
-    }
-
-    public IActionResult GetUserOrders(Client client)
-    {
-        return BadRequest();
-    }
-
-    public IActionResult GetOrderItems()
-    {
-        return BadRequest();
-    }
-
-    public IActionResult GetOrderInfo(Order order)
-    {
-        return BadRequest();
-    }
-
-    public IActionResult CreateOrder(Order order)
-    {
-        return BadRequest();
-    }
-
-    public IActionResult UpdateOrder(Order order)
-    {
-        return BadRequest();
+        _dbContext = dbContext;
     }
     
 }
