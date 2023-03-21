@@ -37,7 +37,53 @@ public class ApiController : ControllerBase
         return _dbContext.Employees;
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateClient(Client client)
+    {
+        try
+        {
+            await _dbContext.Clients.AddAsync(client);
+            
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+
+        return Ok();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateEmployee(Employee employee)
+    {
+        try
+        {
+            await _dbContext.Employees.AddAsync(employee);
+            
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+
+        return Ok();
+    }
     
+    [HttpPost]
+    public async Task<IActionResult> CreateOrderItem(OrderItem orderItem)
+    {
+        try
+        {
+            await _dbContext.OrderItems.AddAsync(orderItem);
+            
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
 
-
+        return Ok();
+    }
+    
+    
 }
