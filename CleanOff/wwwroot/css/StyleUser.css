@@ -12,20 +12,20 @@
 }
 
     /* Style the sidebar links */
-    .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-        font-size: 18px;
-        border-bottom: 1px solid #ddd;
-    }
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
 
 /*         Change the background color of the active link */
-        .sidebar a.active {
-            background-color: #0d6efd;
-            color: white;
-        }
+.sidebar a.active {
+    background-color: #0d6efd;
+    color: white;
+}
 
 /* Style the main content */
 .main {
@@ -78,16 +78,16 @@
     overflow-y: hidden;
 }
 
-    .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
 
 @media (min-width: 992px) {
     .rounded-lg-3 {
