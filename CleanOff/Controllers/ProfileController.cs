@@ -8,4 +8,8 @@ public class ProfileController: Controller
     {
         return View();
     }
+    public IActionResult Useraccount()
+    {
+        return View();
+    }
 }
