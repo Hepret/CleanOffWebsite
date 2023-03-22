@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CleanOff.Controllers;
 
+[ApiController]
+[Route("api")]
 public class ApiController : ControllerBase
 {
     private readonly ApplicationDbContext _dbContext;
@@ -13,31 +15,31 @@ public class ApiController : ControllerBase
         _dbContext = dbContext;
     }
 
-    [HttpGet]
+    [HttpGet("getClients")] 
     public IEnumerable<Client> GetClients()
     {
         return _dbContext.Clients;
     }
     
-    [HttpGet]
+    [HttpGet("getOrders")]
     public IEnumerable<Order> GetOrders()
     {
         return _dbContext.Orders;
     }
 
-    [HttpGet]
+    [HttpGet("getItems")]
     public IEnumerable<OrderItem> GetItems()
     {
         return _dbContext.OrderItems;
     }
 
-    [HttpGet]
+    [HttpGet("getEmployees")]
     public IEnumerable<Employee> GetEmployees()
     {
         return _dbContext.Employees;
     }
 
-    [HttpPost]
+    [HttpPost("createClient")]
     public async Task<IActionResult> CreateClient(Client client)
     {
         try
@@ -53,7 +55,7 @@ public class ApiController : ControllerBase
         return Ok();
     }
 
-    [HttpPost]
+    [HttpPost("createEmployee")]
     public async Task<IActionResult> CreateEmployee(Employee employee)
     {
         try
@@ -69,7 +71,7 @@ public class ApiController : ControllerBase
         return Ok();
     }
     
-    [HttpPost]
+    [HttpPost("CreateOrderItem")]
     public async Task<IActionResult> CreateOrderItem(OrderItem orderItem)
     {
         try
