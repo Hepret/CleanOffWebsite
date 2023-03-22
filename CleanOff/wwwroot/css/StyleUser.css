@@ -6,7 +6,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #f5f5f5;
+    background-color: white;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -21,7 +21,7 @@
         border-bottom: 1px solid #ddd;
     }
 
-        /* Change the background color of the active link */
+/*         Change the background color of the active link */
         .sidebar a.active {
             background-color: #0d6efd;
             color: white;
@@ -33,6 +33,9 @@
     padding: 0px 10px;
 }
 
+.btn-width {
+    width: 150px;
+}
 
 /*--------------------------------*/
 .bd-placeholder-img {
