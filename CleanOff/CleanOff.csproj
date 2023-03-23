@@ -17,4 +17,8 @@
       <_ContentIncludedByDefault Remove="Pages\Profile\Index.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\img\" />
+    </ItemGroup>
+
 </Project>
