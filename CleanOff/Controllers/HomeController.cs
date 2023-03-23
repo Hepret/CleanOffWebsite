@@ -10,13 +10,14 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult SignUp()
+    public IActionResult About()
     {
-        return Ok();
+        return View();
     }
 
-    public IActionResult Login()
+    public IActionResult Contact()
     {
-        return Ok();
+        return View();
     }
+
 }
