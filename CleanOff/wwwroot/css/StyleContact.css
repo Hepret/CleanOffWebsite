@@ -1,0 +1,55 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 70vh;
+    background: url("../img/staff.jpg") center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 80%);
+    overflow: hidden;
+    padding: 0;
+    margin-top: 2%;
+}
+
+.headerBestWorkers {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 6%;
+}
+
+.worker_info {
+    text-align: center;
+    margin: 0 10%;
+}
+
+.img_worker {
+    display: block;
+    margin: auto;
+    width: 20%;
+    c height: 20%;
+}
+
+.name1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.describe1 {
+    color: gray;
+}
+
+.resume1 {
+    font-size: 18px;
+    font-style: oblique 45deg;
+}
+
+.standing {
+    font-weight: bold;
+    font-size: 20px;
+}
