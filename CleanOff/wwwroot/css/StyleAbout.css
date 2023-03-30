@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 70vh;
+    background: url("../img/himch.jpeg") center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 80%);
+    overflow: hidden;
+    padding: 0;
+    margin-top: 2%;
+}
+
+.paragraphs {
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.services {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .services li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.image {
+    float: left;
+    width: 20%;
+    height: 20%;
+    margin-right: 10px;
+}
+
+.title {
+}
+
+.text {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.history {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+}
+
+.services li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.benefits {
+    margin-left: 25%;
+}
+
+    .benefits ul {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+
+        .benefits ul li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            line-height: 1.5;
+            text-indent: -15px;
+        }
+
+            .benefits ul li:before {
+                content: "•";
+                display: inline-block;
+                width: 10px;
+                margin-left: -5px;
+                margin-right: 10px;
+                font-size: 20px;
+            }
