@@ -1,7 +1,8 @@
-using Microsoft.EntityFrameworkCore;
 using CleanOff.Models;
 using CleanOff.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    //options.UseInMemoryDatabase("test");
 });
 builder.Services.AddScoped<IClientManager, ClientManager>();
 
