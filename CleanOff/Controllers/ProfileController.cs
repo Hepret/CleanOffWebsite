@@ -9,6 +9,7 @@ public class ProfileController: Controller
     {
         return View();
     }
+    [HttpGet]
     [Route("profile")]
     public IActionResult Useraccount()
     {
