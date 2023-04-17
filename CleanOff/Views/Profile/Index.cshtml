@@ -16,12 +16,12 @@
             <h1 class="h3 mb-3 fw-normal">Вы уже смешарик?</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control mb-3 border-primary" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
+                <input name="email" type="email" class="form-control mb-3 border-primary loginEmailInput" id="floatingInputLogin" placeholder="name@example.com">
+                <label for="floatingInputLogin">Email</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control border-primary" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Пароль</label>
+                <input name="password" type="password" class="form-control border-primary loginPasswordInput" id="floatingPasswordLogin" placeholder="Password">
+                <label for="floatingPasswordLogin">Пароль</label>
             </div>
 
             <div class="checkbox mb-3">
@@ -30,9 +30,44 @@
                 </label>
             </div>
 
-             <a href="@Url.Action("Useraccount", "Profile")" class="w-100 btn btn-lg btn-primary" type="submit">
-            Войти
-            </a>
+            
+            <button  class="w-100 btn btn-lg btn-primary submitLoginBtn" @*type="submit"*@>
+                Войти
+            </button>
+
+            @* TODO вот пример как делать fetch надо будет это сделать цивильно *@
+            <script>
+                let loginBtn = document.getElementsByClassName("submitLoginBtn")[0];
+                loginBtn.addEventListener("click", async function (event) {
+                    event.preventDefault();
+                    console.log("Начал отправлять запрос")
+                    let email = document.getElementsByClassName("loginEmailInput")[0].value;
+                    let password = document.getElementsByClassName("loginPasswordInput")[0].value;
+             
+                    const data = { Email: email, Password: password };
+                    const options = {
+                      method: "POST",
+                      body: JSON.stringify(data),
+                      headers: {
+                        "Content-Type": "application/json"
+                      }
+                    };
+                    
+                    try {
+                        const response = await fetch("/api/login", options);
+                        let message = await response.text();
+                        if (response.ok) {
+                            const setCookieHeader = response.headers.get("Set-Cookie");
+                            document.cookie = setCookieHeader;
+                            
+                        }
+                        alert(message);
+                        console.log(data);
+                      } catch (error) {
+                      }
+                    });
+                
+            </script>
 
             <button onclick="switchForms()" class="w-100 btn btn-lg btn-outline-primary mt-3 bg-white new-user" type="button">Нет, я новенький</button>
         </div>
@@ -43,26 +78,58 @@
             <h1 class="h3 mb-3 fw-normal">Стань смешариком прямо сейчас</h1>
 
             <div class="form-floating">
-                <input type="text" aria-label="Имя" class="form-control border-primary  w-100 rounded-1 mt-1">
+                <input type="text" name="name" aria-label="Имя" class="form-control border-primary  w-100 rounded-1 mt-1 nameRegisterInput">
                 <label for="floatingInput">Имя</label>
             </div>
             <div class="form-floating">
-                <input type="text" aria-label="Фамилия" class="form-control border-primary  w-100 rounded-1 mt-1">
+                <input type="text" name="surname" aria-label="Фамилия" class="form-control border-primary  w-100 rounded-1 mt-1 surnameRegisterInput">
                 <label for="floatingInput">Фамилия</label>
             </div>
 
             <div class="form-floating">
-                <input type="email" class="form-control mb-3 border-primary mt-3" id="floatingInput" placeholder="name@example.com">
+                <input type="email" name="email" class="form-control mb-3 border-primary mt-3 emailRegisterInput" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control border-primary" id="floatingPassword" placeholder="Password">
+                <input type="password" name="password" class="form-control border-primary passwordRegisterInput" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Пароль</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary mt-3" type="button">Зарегестрироваться</button>
+            <button class="w-100 btn btn-lg btn-primary mt-3 registerBtn" type="button">Зарегестрироваться</button>
             <button onclick="switchFormsback()" type="button" class="btn btn-outline-secondary mt-3">Вспомнил, я всё таки смешарик</button>
         </div>
     </form>
+    
+            <script>
+                let registerBtn = document.getElementsByClassName("registerBtn")[0];
+                registerBtn.addEventListener("click", async function (event) {
+                    event.preventDefault();
+                    console.log("Начал отправлять запрос")
+                    let email = document.getElementsByClassName("emailRegisterInput")[0].value;
+                    let password = document.getElementsByClassName("passwordRegisterInput")[0].value;
+                    let name = document.getElementsByClassName("nameRegisterInput")[0].value;
+                    let surname = document.getElementsByClassName("surnameRegisterInput")[0].value;
+                    const data = {Name: name, Surname: surname, Email: email, Password: password };
+                    const options = {
+                      method: "POST",
+                      body: JSON.stringify(data),
+                      headers: {
+                        "Content-Type": "application/json"
+                      }
+                    };
+                    
+                    try {
+                        const response = await fetch("/api/register", options);
+                        let message = await response.text();
+                        if (response.ok) {
+                            const setCookieHeader = response.headers.get("Set-Cookie");
+                            document.cookie = setCookieHeader;
+                        }
+                        alert(message);
+                        console.log(data);
+                      } catch (error) {
+                      }
+                    });
+            </script>
 </main>
 </body>
 
