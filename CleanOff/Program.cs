@@ -1,15 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using CleanOff.Models;
+using CleanOff.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
+// Configuration
+builder.Configuration.AddJsonFile("connection_strings.json");
+
 // Service settings
 builder.Services.AddControllersWithViews();
-builder.Configuration.AddJsonFile("connection_strings.json");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IClientManager, ClientManager>();
 
 // swagger
 builder.Services.AddEndpointsApiExplorer();
