@@ -1,6 +1,6 @@
 ﻿using CleanOff.Domain;
 
-namespace CleanOff.Services;
+namespace CleanOff.Exceptions;
 
 public class ClientAlreadyExistException : ArgumentException
 {
