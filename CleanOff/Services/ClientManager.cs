@@ -17,11 +17,22 @@ public class ClientManager : IClientManager
     {
         try
         {
+            var isAlreadyExist = await FindClientByEmail(client.Email) != null;
+            if (isAlreadyExist)
+            {
+                throw new ClientAlreadyExistException(client);
+            }
+
             await _context.Clients.AddAsync(client);
             await _context.SaveChangesAsync();
         }
+        catch (ClientAlreadyExistException e)
+        {
+            throw;
+        }
         catch (Exception e)
         {
+            throw;
             // TODO Handle Exception when try add New Client To Database
         }
 
