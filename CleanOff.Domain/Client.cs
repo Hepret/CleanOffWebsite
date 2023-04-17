@@ -8,9 +8,9 @@ public class Client
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public Guid ClientId { get; set; }
-    public string Name { get; set; }
-    public string Phone { get; set; }
+    public required Guid ClientId { get; set; }
+    public required string Name { get; set; }
+    public required string PasswordHash { get; set; }
     public string Email { get; set; }
     public List<Order> Orders { get; set; }
     
@@ -20,7 +20,7 @@ public class Client
     {
         ClientId = Guid.NewGuid();
         Name = registerDto.Name;
-        Phone = registerDto.Phone;
         Email = registerDto.Email;
+        PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
     }
 }
