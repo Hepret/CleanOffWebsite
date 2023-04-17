@@ -1,5 +1,10 @@
 ﻿using CleanOff.Domain;
+using CleanOff.Exceptions;
 using CleanOff.Models;
+using CleanOff.Services;
+using CleanOff.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanOff.Controllers;
@@ -9,10 +14,59 @@ namespace CleanOff.Controllers;
 public class ApiController : ControllerBase
 {
     private readonly ApplicationDbContext _dbContext;
+    private readonly IClientManager _clientManager;
 
-    public ApiController(ApplicationDbContext dbContext)
+    public ApiController(ApplicationDbContext dbContext, IClientManager clientManager)
     {
         _dbContext = dbContext;
+        _clientManager = clientManager;
+    }
+
+    [AllowAnonymous]
+    [Route("register")]
+    [Route("api/register")]
+    [HttpPost("register")]
+    public async Task<IActionResult> Register(ClientRegisterDto registerDto)
+    {
+        var client = new Client(registerDto);
+        try
+        {
+            await _clientManager.CreateAsync(client);
+            await Authenticate(client);
+            return Ok("Регистрация прошла успешно");
+        }
+        catch (ClientAlreadyExistException e)
+        {
+            // TODO Добавить логирование
+            return BadRequest("Пользователь с такой почтой уже существует");
+        }
+        catch (Exception e)
+        {
+            // TODO Добавить логирование
+            return BadRequest("Ошибка регистрации попробуйте позже");
+        }
+    }
+
+    [HttpPost("login")]
+    [Route("login")]
+    [Route("api/login")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Login(ClientLoginDto loginDto)
+    {
+        try
+        {
+            var email = loginDto.Email;
+            var client = await _clientManager.FindClientByEmail(email);
+            if (client == null) throw new ClientDoesntExistException(email);
+            var verifyPassword = _clientManager.VerifyPassword(client, loginDto.Password);
+            if (!verifyPassword) throw new WrongClientPasswordException(email);
+            await Authenticate(client);
+            return Ok("Вы успешно вошли");
+        }
+        catch (Exception e)
+        {
+            return BadRequest("Неправильно введнная почта или пароль");
+        }
     }
 
     [HttpGet("getClients")] 
@@ -86,6 +140,11 @@ public class ApiController : ControllerBase
 
         return Ok();
     }
-    
-    
+
+    [NonAction]
+    private async Task Authenticate(Client client)
+    {
+        var claimsPrincipal = ClientClaimsConverter.Convert(client);
+        await HttpContext.SignInAsync(claimsPrincipal);
+    }
 }
