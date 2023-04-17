@@ -35,10 +35,13 @@ public class ClientManager : IClientManager
             throw;
             // TODO Handle Exception when try add New Client To Database
         }
-
-        
-
     }
+
+    public bool VerifyPassword(Client client, string password)
+    {
+        return BCrypt.Net.BCrypt.Verify(password, client.PasswordHash);
+    }
+
     public async Task<Client?> FindClientById(Guid id)
     {
         var client = await  _context.Clients.FirstOrDefaultAsync(c => c.ClientId == id);
