@@ -8,11 +8,12 @@ public class Client
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public required Guid ClientId { get; set; }
-    public required string Name { get; set; }
-    public required string PasswordHash { get; set; }
-    public string Email { get; set; }
-    public List<Order> Orders { get; set; }
+    public Guid ClientId { get; set; }
+
+    public string Name { get; set; } = null!;
+    public string PasswordHash { get; set; } = null!;
+    public string Email { get; set; } = null!;
+    public List<Order> Orders { get; set; } = null!;
     
     public Client() {}
 
