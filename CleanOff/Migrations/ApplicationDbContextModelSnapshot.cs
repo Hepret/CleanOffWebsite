@@ -17,7 +17,7 @@ namespace CleanOff.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -28,7 +28,7 @@ namespace CleanOff.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Mail")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -36,7 +36,11 @@ namespace CleanOff.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("text");
 
