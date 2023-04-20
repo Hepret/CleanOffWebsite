@@ -16,6 +16,7 @@ public class EmployeeManager : IEmployeeManager
     public async Task CreateAsync(Employee employee)
     {
         await _context.Employees.AddAsync(employee);
+        await _context.SaveChangesAsync();
     }
 
     public async Task<List<Employee>> GetAllEmployees()
