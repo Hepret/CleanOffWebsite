@@ -8,5 +8,5 @@ public class ClientAlreadyExistException : AlreadyExistException<Client>
     {
     }
 
-    public override string Message => $"Пользователь с электронной почтой уже существует: {_item.Email}";
+    public override string Message => $"Пользователь с электронной почтой: {_item.Email} - уже существует";
 }
