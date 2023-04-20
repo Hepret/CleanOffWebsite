@@ -1,4 +1,5 @@
 ﻿using CleanOff.Domain;
+using CleanOff.Domain.Users;
 using CleanOff.Exceptions;
 using CleanOff.Exceptions.AlreadyExistExceptions;
 using CleanOff.Models;
@@ -7,6 +8,7 @@ using CleanOff.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanOff.Controllers;
 
@@ -24,8 +26,6 @@ public class ApiController : ControllerBase
     }
 
     [AllowAnonymous]
-    [Route("register")]
-    [Route("api/register")]
     [HttpPost("register")]
     public async Task<IActionResult> Register(ClientRegisterDto registerDto)
     {
@@ -48,9 +48,15 @@ public class ApiController : ControllerBase
         }
     }
 
+    [HttpGet("getAdmins")]
+    public async Task<IActionResult> GetAdmins()
+    {
+        var admins = await _dbContext.Admins.ToListAsync();
+        return Ok(admins);
+    }
+    
+    
     [HttpPost("login")]
-    [Route("login")]
-    [Route("api/login")]
     [AllowAnonymous]
     public async Task<IActionResult> Login(ClientLoginDto loginDto)
     {
@@ -70,10 +76,27 @@ public class ApiController : ControllerBase
         }
     }
 
-    [HttpGet("getClients")] 
+    [HttpGet("getClients")]
     public IEnumerable<Client> GetClients()
     {
         return _dbContext.Clients;
+    }
+
+    [HttpPost("addAdmin")]
+    public async Task<IActionResult> AddAdmin(AdminRegisterDto registerDto)
+    {
+        var admin = new Admin(registerDto);
+        try
+        {
+            await _dbContext.Admins.AddAsync(admin);
+            await _dbContext.SaveChangesAsync();
+            return Ok("Администратор добавлен");
+        }
+        catch (Exception e)
+        {
+            return BadRequest("Ошибка добавления администратора");
+        }
+        
     }
     
     [HttpGet("getOrders")]
