@@ -8,4 +8,5 @@ public interface IEmployeeManager
     public bool VerifyPassword(Employee employee, string password);
     public Task<Employee?> FindById(Guid id);
     public Task<Employee?> FindByEmail(string email);
+    public Task<List<Employee>> GetAllEmployees();
 }
