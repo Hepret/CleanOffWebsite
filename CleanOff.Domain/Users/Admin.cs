@@ -1,15 +1,19 @@
-﻿using CleanOff.ViewModels;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using CleanOff.ViewModels;
 
 namespace CleanOff.Domain.Users;
 
 public class Admin 
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key]
     public Guid AdminId { get; set; }
     public string Name { get; set; } = null!;
     public string Surname { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
     public string Email { get; set; } = null!;
-    
+    public Admin() {}
     public Admin(AdminRegisterDto registerDto){
         AdminId = Guid.NewGuid();
         Name = registerDto.Name;
