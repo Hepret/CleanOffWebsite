@@ -1,10 +1,10 @@
 ﻿using CleanOff.Domain;
 using CleanOff.Domain.Users;
+using CleanOff.Domain.ViewModels;
 using CleanOff.Exceptions;
 using CleanOff.Exceptions.AlreadyExistExceptions;
 using CleanOff.Models;
 using CleanOff.Services;
-using CleanOff.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
