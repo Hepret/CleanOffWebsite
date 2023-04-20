@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CleanOff.Controllers;
 
@@ -9,9 +10,9 @@ public class ProfileController: Controller
     {
         return View();
     }
-    [HttpGet]
-    [Route("profile")]
-    public IActionResult Useraccount()
+    [HttpGet("profile")]
+    [Authorize(Roles = "Client")]
+    public IActionResult UserAccount()
     {
         return View();
     }
