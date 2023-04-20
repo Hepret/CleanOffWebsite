@@ -1,6 +1,6 @@
 ﻿using CleanOff.Domain.Users;
 
-namespace CleanOff.ViewModels;
+namespace CleanOff.Domain.ViewModels;
 
 public class AdminViewModel
 {

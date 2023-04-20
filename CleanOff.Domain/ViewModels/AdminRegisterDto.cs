@@ -1,4 +1,4 @@
-﻿namespace CleanOff.ViewModels;
+﻿namespace CleanOff.Domain.ViewModels;
 
 public class AdminRegisterDto
 {
