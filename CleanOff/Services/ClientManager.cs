@@ -1,5 +1,5 @@
 using CleanOff.Domain;
-using CleanOff.Exceptions;
+using CleanOff.Exceptions.AlreadyExistExceptions;
 using CleanOff.Models;
 using Microsoft.EntityFrameworkCore;
 
