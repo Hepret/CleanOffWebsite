@@ -31,7 +31,7 @@ public class AdminController : Controller
     public async Task<IActionResult> Index()
     {
         var employees = await _employeeManager.GetAllEmployees();
-        List<EmployeeViewModel> employeeViewModels = employees
+        var employeeViewModels = employees
             .Select(employee => new EmployeeViewModel(employee))
             .ToList();
         return View(employeeViewModels);
