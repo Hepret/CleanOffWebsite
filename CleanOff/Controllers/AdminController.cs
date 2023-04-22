@@ -90,6 +90,14 @@ public class AdminController : Controller
         var admin = await _adminManager.FindByIdAsync(id);
         return View(admin!);
     }
+    
+    [AdminAuthorizeFilter]
+    [HttpGet("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
 
     [NonAction]
     async Task Authenticate(Admin admin)
