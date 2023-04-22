@@ -1,0 +1,38 @@
+﻿@model CleanOff.Domain.Users.Admin
+
+@{
+    Layout = "_AdminPanelLayout";
+}
+
+<!DOCTYPE html>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Admin ID: @Model.AdminId</h5>
+        @* <h6 class="card-text">@Model.Name</h6> *@
+        @* <h6 class="card-text">@Model.Surname</h6> *@
+        @* <р6 class="card-text">@Model.Email</р6> *@
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>First Name</td>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>@Model.Surname</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Model.Email</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
