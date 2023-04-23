@@ -1,10 +1,11 @@
-﻿.container {
+﻿.containerfoot {
     width: auto;
     max-width: 680px;
     padding: 0 15px;
     position: fixed;
     bottom: 0;
     right: 0;
+    flex-shrink: 0;
 }
 
 
