@@ -4,20 +4,24 @@
 }
 
 <div>
-      <h1>Register New Employee</h1>
-          <form action="/admin/createEmployee" method="POST">
-              <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="Name" required><br><br>
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="Surname" required><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="Email" required><br><br>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="Phone" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="Password" required><br><br>
-            <button type="submit">Register</button>
-            </div>
+    <h1 class="display-4 m-3 p-3">Регистрация нового сотрудника</h1>
+          <form action="/admin/createEmployee" method="POST" class="container-flex">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Имя</span>
+            <input class="form-control" type="text" id="name" name="Name" required><br><br>
+            <span class="input-group-text">Фамилия</span>
+            <input class="form-control" type="text" id="surname" name="Surname" required><br><br>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Email</span>
+            <input class="form-control" type="email" id="email" name="Email" required><br><br>
+            <span class="input-group-text">Телефон</span>
+            <input class="form-control" type="tel" id="phone" name="Phone" required><br><br>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Пароль</span>
+            <input class="form-control" type="password" id="password" name="Password" required><br><br>
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit">Register</button>
           </form>
 </div>
