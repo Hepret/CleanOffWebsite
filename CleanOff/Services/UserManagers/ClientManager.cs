@@ -3,7 +3,7 @@ using CleanOff.Exceptions.AlreadyExistExceptions;
 using CleanOff.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanOff.Services;
+namespace CleanOff.Services.UserManagers;
 
 public class ClientManager : IClientManager
 {

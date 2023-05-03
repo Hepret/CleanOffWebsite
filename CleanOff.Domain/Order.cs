@@ -12,8 +12,28 @@ public class Order
     public Client Client { get; set; } = null!;
     public Employee Employee { get; set; } = null!;
     public DateTime RequestDate { get; set; }
-    public DateTime DateOfIssue { get; set; }
-    public List<OrderItems> OrderItems { get; set; }
-    public decimal Price => OrderItems.Sum(items => items.Price);
+    public DateTime? DateOfIssue { get; set; }
+    public string Description { get; set; } = null!;
+    public decimal? Price { get; set; }
+
+    public Order()
+    {
+    }
+
+    public Order(OrderViewModel orderViewModel)
+    {
+        OrderState = OrderState.New;
+        Client = orderViewModel.Client;
+        RequestDate = orderViewModel.RequestDate;
+        DateOfIssue = null;
+        Description = orderViewModel.Description;
+    }
+}
+
+public class OrderViewModel
+{
+    public Client Client { get; set; } = null!;
+    public DateTime RequestDate { get; set; }
+    public string Description { get; set; } = null!;   
 }
 

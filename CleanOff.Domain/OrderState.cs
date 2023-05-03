@@ -6,5 +6,6 @@ public enum OrderState
     OrderDenied,
     OrderChecked,
     OrderInProgress,
-    OrderComplete
+    OrderComplete,
+    New
 }
