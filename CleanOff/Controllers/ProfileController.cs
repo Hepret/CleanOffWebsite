@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using CleanOff.Domain;
 using CleanOff.Domain.Users;
+using CleanOff.Domain.ViewModels;
 using CleanOff.Filters;
 using CleanOff.Services;
 using CleanOff.Services.UserManagers;
