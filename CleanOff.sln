@@ -3,17 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanOff", "CleanOff\CleanOff.csproj", "{51E57908-A16A-4D42-ADD0-0C71B7EA6E66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanOff", "CleanOff\CleanOff.csproj", "{51E57908-A16A-4D42-ADD0-0C71B7EA6E66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanOff.Domain", "CleanOff.Domain\CleanOff.Domain.csproj", "{8A0CC807-30E0-4688-89DA-98C45B080D07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanOff.Domain", "CleanOff.Domain\CleanOff.Domain.csproj", "{8A0CC807-30E0-4688-89DA-98C45B080D07}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{72ECDD5A-84C5-45D4-94CE-9FBA2A0823B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{51E57908-A16A-4D42-ADD0-0C71B7EA6E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,5 +23,12 @@ Global
 		{8A0CC807-30E0-4688-89DA-98C45B080D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A0CC807-30E0-4688-89DA-98C45B080D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A0CC807-30E0-4688-89DA-98C45B080D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72ECDD5A-84C5-45D4-94CE-9FBA2A0823B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72ECDD5A-84C5-45D4-94CE-9FBA2A0823B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72ECDD5A-84C5-45D4-94CE-9FBA2A0823B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72ECDD5A-84C5-45D4-94CE-9FBA2A0823B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

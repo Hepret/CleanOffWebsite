@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  cleanoff:
+    image: ${DOCKER_REGISTRY-}cleanoff
+    build:
+      context: .
+      dockerfile: CleanOff\Dockerfile
