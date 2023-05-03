@@ -19,7 +19,7 @@ public class EmployeeManager : IEmployeeManager
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<Employee>> GetAllEmployees()
+    public async Task<List<Employee>> GetAllEmployeesAsync()
     {
         return await _context.Employees.ToListAsync();
     }
@@ -29,12 +29,12 @@ public class EmployeeManager : IEmployeeManager
         return BCrypt.Net.BCrypt.Verify(password, employee.HashPassword);
     }
 
-    public async Task<Employee?> FindById(Guid id)
+    public async Task<Employee?> FindByIdAsync(Guid id)
     {
         return await _context.Employees.FirstOrDefaultAsync(e => e.EmployeeId == id)!;
     }
 
-    public async Task<Employee?> FindByEmail(string email)
+    public async Task<Employee?> FindByEmailAsync(string email)
     {
         return await _context.Employees.FirstOrDefaultAsync(e => e.Email == email)!;
 

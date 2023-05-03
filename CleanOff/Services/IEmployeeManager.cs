@@ -6,7 +6,7 @@ public interface IEmployeeManager
 {
     public Task CreateAsync(Employee employee);
     public bool VerifyPassword(Employee employee, string password);
-    public Task<Employee?> FindById(Guid id);
-    public Task<Employee?> FindByEmail(string email);
-    public Task<List<Employee>> GetAllEmployees();
+    public Task<Employee?> FindByIdAsync(Guid id);
+    public Task<Employee?> FindByEmailAsync(string email);
+    public Task<List<Employee>> GetAllEmployeesAsync();
 }

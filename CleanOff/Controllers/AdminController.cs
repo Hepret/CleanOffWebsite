@@ -30,7 +30,7 @@ public class AdminController : Controller
     [HttpGet("/admin")]
     public async Task<IActionResult> Index()
     {
-        var employees = await _employeeManager.GetAllEmployees();
+        var employees = await _employeeManager.GetAllEmployeesAsync();
         var employeeViewModels = employees
             .Select(employee => new EmployeeViewModel(employee))
             .ToList();
