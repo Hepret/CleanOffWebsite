@@ -1,4 +1,5 @@
 ﻿using CleanOff.Domain;
+using CleanOff.Domain.Users;
 using CleanOff.Domain.ViewModels;
 using CleanOff.Exceptions;
 using CleanOff.Filters;

@@ -1,4 +1,6 @@
-﻿namespace CleanOff.Domain.ViewModels;
+﻿using CleanOff.Domain.Users;
+
+namespace CleanOff.Domain.ViewModels;
 
 public class EmployeeViewModel
 {

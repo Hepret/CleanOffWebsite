@@ -1,4 +1,5 @@
 ﻿using CleanOff.Domain;
+using CleanOff.Domain.Users;
 
 namespace CleanOff.Services.UserManagers;
 

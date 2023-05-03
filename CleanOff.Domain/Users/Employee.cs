@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using CleanOff.Domain.ViewModels;
 
-namespace CleanOff.Domain;
+namespace CleanOff.Domain.Users;
 
 public class Employee
 {

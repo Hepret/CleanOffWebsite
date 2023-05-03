@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using CleanOff.Domain;
+using CleanOff.Domain.Users;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CleanOff.Services;

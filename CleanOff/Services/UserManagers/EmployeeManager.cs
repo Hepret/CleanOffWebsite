@@ -1,4 +1,5 @@
 ﻿using CleanOff.Domain;
+using CleanOff.Domain.Users;
 using CleanOff.Models;
 using Microsoft.EntityFrameworkCore;
 
