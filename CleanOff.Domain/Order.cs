@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using CleanOff.Domain.Users;
+using CleanOff.Domain.ViewModels;
 
 namespace CleanOff.Domain;
 
@@ -30,11 +31,3 @@ public class Order
         Description = orderViewModel.Description;
     }
 }
-
-public class OrderViewModel
-{
-    public Client Client { get; set; } = null!;
-    public DateTime RequestDate { get; set; }
-    public string Description { get; set; } = null!;   
-}
-
