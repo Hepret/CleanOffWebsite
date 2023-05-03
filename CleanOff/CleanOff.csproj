@@ -4,7 +4,9 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <UserSecretsId>3f8f58d8-d488-41db-a186-8edd8684b422</UserSecretsId>
+        <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,11 +20,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Docker.DotNet" Version="3.125.14" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.5" />
+      <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
