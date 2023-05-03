@@ -66,14 +66,15 @@ public class EmployeeController : Controller
         var claimsPrincipals = EmployeeClaimsConverter.Convert(employee);
         await HttpContext.SignInAsync(claimsPrincipals);
     }
-
-    
-    
     #endregion
 
     #region Создание заказов
-    
 
+    [HttpGet("create_order")]
+    public IActionResult CreateOrder()
+    {
+        return View();
+    }
     #endregion
 
     #region Обработка заказов
