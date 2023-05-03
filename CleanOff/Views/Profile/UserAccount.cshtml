@@ -49,81 +49,46 @@
       2
   </form>
 
-    <form id="make" style="display:none" class="needs-validation" novalidate>
-        <div class="container-fluid col-xxl-6 px-5 py-5 d-flex" style="width: 50%">
-            <div class="row flex-lg-row align-items-center g-1 py-5">
-                <div class="col-md-7 col-lg-8">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <label for="firstName" class="form-label">Имя</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                                Чо?
-                            </div>
+    <form id="make" class="needs-validation" novalidate style="display:none">
+        <div class="container mt-5 p-5">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <h2 class="text-center mb-4">Создать заказ</h2>
+                        <div class="form-group">
+                            <label for="address">Адрес</label>
+                            <input type="text" class="form-control" id="address" placeholder="Введите адрес">
                         </div>
-
-                        <div class="col-sm-6">
-                            <label for="lastName" class="form-label">Фамилия</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                                Не понял...
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="megumin@vlsu.ru">
-                            <div class="invalid-feedback">
-                                Нормально введи, а
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="address" class="form-label">Адрес</label>
-                            <input type="text" class="form-control" id="address" placeholder="Общежитие номер 6" required>
-                            <div class="invalid-feedback">
-                                Не не не не не
-                            </div>
-                        </div>
-
-                        <div class="col-md-5">
-                            <label for="country" class="form-label">Страна</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Выбрать...</option>
-                                <option>Российская Федерация</option>
-                                <option>Долина смешариков</option>
+                        <div class="form-group">
+                            <label for="country">Страна</label>
+                            <select class="form-control" id="country">
+                                <option>Россия</option>
+                                <option>Украина</option>
+                                <option>Беларусь</option>
+                                <option>Казахстан</option>
+                                <option>Другая</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Неправильно
-                            </div>
                         </div>
-
-                        <div class="col-md-4">
-                            <label for="state" class="form-label">Область</label>
-                            <select class="form-select" id="state" required>
-                                <option value="">Выбрать...</option>
-                                <option>Владимирская</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Да нууууууууу
-                            </div>
+                        <div class="form-group">
+                            <label for="region">Область</label>
+                            <input type="text" class="form-control" id="region" placeholder="Введите область">
                         </div>
-                    </div>
-
+                        <div class="form-group">
+                            <label for="additional-info">Описание заказа</label>
+                            <textarea class="form-control" id="additional-info" rows="3" placeholder="Введите дополнительную информацию"></textarea>
+                        </div>
                     <hr class="my-4">
-
                     <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Хочу, чтобы вы приехали
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Я сам приеду
-                                </label>
-                            </div>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Хочу, чтобы вы приехали
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Я сам приеду
+                        </label>
+                    </div>
           <hr class="my-4">
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Создать заказ</button>
@@ -139,7 +104,30 @@
   </form>
 
   <form id="profile" style="display:none"> @*Мой профиль*@
-        4
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <button class="btn btn-lg btn-danger">
+                ВЫЙТИ
+            </button>
+        </div>
+        @* ПОСМОТРИ СКРИПТ ПОЖАЛУЙСТА*@
+        <script>
+            const logoutButton = document.querySelector('.btn-danger');
+            logoutButton.addEventListener('click', () => {
+                fetch('/Account/Logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: ''
+                })
+                    .then(response => {
+                        if (response.redirected) {
+                            window.location.href = response.url;
+                        }
+                    })
+                    .catch(error => console.error(error));
+            });
+        </script>
   </form>
    
 </body>
