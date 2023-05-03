@@ -5,6 +5,7 @@ using CleanOff.Exceptions;
 using CleanOff.Filters;
 using CleanOff.Models;
 using CleanOff.Services;
+using CleanOff.Services.UserManagers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

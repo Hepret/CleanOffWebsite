@@ -1,6 +1,6 @@
 ﻿using CleanOff.Domain.Users;
 
-namespace CleanOff.Services;
+namespace CleanOff.Services.UserManagers;
 
 public interface IAdminManager
 {

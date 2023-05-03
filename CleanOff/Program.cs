@@ -1,5 +1,6 @@
 using CleanOff.Models;
 using CleanOff.Services;
+using CleanOff.Services.UserManagers;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 

@@ -4,6 +4,7 @@ using CleanOff.Exceptions;
 using CleanOff.Filters;
 using CleanOff.Models;
 using CleanOff.Services;
+using CleanOff.Services.UserManagers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -66,14 +67,15 @@ public class EmployeeController : Controller
         var claimsPrincipals = EmployeeClaimsConverter.Convert(employee);
         await HttpContext.SignInAsync(claimsPrincipals);
     }
-
-    
-    
     #endregion
 
     #region Создание заказов
-    
 
+    [HttpGet("create_order")]
+    public IActionResult CreateOrder()
+    {
+        return View();
+    }
     #endregion
 
     #region Обработка заказов

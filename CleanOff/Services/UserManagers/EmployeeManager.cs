@@ -2,7 +2,7 @@
 using CleanOff.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanOff.Services;
+namespace CleanOff.Services.UserManagers;
 
 public class EmployeeManager : IEmployeeManager
 {

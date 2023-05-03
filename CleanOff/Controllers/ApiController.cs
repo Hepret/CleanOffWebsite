@@ -5,6 +5,7 @@ using CleanOff.Exceptions;
 using CleanOff.Exceptions.AlreadyExistExceptions;
 using CleanOff.Models;
 using CleanOff.Services;
+using CleanOff.Services.UserManagers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,9 @@ public class ApiController : ControllerBase
         _dbContext = dbContext;
         _clientManager = clientManager;
     }
+
+
+    #region Авторизация пользователя
 
     [AllowAnonymous]
     [HttpPost("register")]
@@ -47,14 +51,6 @@ public class ApiController : ControllerBase
             return BadRequest("Ошибка регистрации попробуйте позже");
         }
     }
-
-    [HttpGet("getAdmins")]
-    public async Task<IActionResult> GetAdmins()
-    {
-        var admins = await _dbContext.Admins.ToListAsync();
-        return Ok(admins);
-    }
-    
     
     [HttpPost("login")]
     [AllowAnonymous]
@@ -75,6 +71,18 @@ public class ApiController : ControllerBase
             return BadRequest("Неправильно введнная почта или пароль");
         }
     }
+    
+    #endregion
+    
+
+    [HttpGet("getAdmins")]
+    public async Task<IActionResult> GetAdmins()
+    {
+        var admins = await _dbContext.Admins.ToListAsync();
+        return Ok(admins);
+    }
+    
+    
 
     [HttpGet("getClients")]
     public IEnumerable<Client> GetClients()
@@ -104,12 +112,7 @@ public class ApiController : ControllerBase
     {
         return _dbContext.Orders;
     }
-
-    [HttpGet("getItems")]
-    public IEnumerable<OrderItem> GetItems()
-    {
-        return _dbContext.OrderItems;
-    }
+    
 
     [HttpGet("getEmployees")]
     public IEnumerable<Employee> GetEmployees()
@@ -149,21 +152,6 @@ public class ApiController : ControllerBase
         return Ok();
     }
     
-    [HttpPost("CreateOrderItem")]
-    public async Task<IActionResult> CreateOrderItem(OrderItem orderItem)
-    {
-        try
-        {
-            await _dbContext.OrderItems.AddAsync(orderItem);
-            
-        }
-        catch (Exception e)
-        {
-            return BadRequest(e.Message);
-        }
-
-        return Ok();
-    }
 
     [NonAction]
     private async Task Authenticate(Client client)
