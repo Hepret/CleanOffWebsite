@@ -89,7 +89,10 @@
                 <input type="text" name="surname" aria-label="Фамилия" class="form-control border-primary  w-100 rounded-1 mt-1 surnameRegisterInput">
                 <label for="floatingInput">Фамилия</label>
             </div>
-
+                <div class="form-floating">
+                    <input type="text" name="Phone" aria-label="Телефон" class="form-control border-primary  w-100 rounded-1 mt-1 phoneRegisterInput">
+                    <label for="floatingInput">Телефон</label>
+                </div>
             <div class="form-floating">
                 <input type="email" name="email" class="form-control mb-3 border-primary mt-3 emailRegisterInput" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email</label>
@@ -112,7 +115,8 @@
                     let password = document.getElementsByClassName("passwordRegisterInput")[0].value;
                     let name = document.getElementsByClassName("nameRegisterInput")[0].value;
                     let surname = document.getElementsByClassName("surnameRegisterInput")[0].value;
-                    const data = {Name: name, Surname: surname, Email: email, Password: password };
+                    let phone = document.getElementsByClassName("phoneRegisterInput")[0].value;
+                    const data = {Name: name, Surname: surname, Email: email, Password: password, Phone: phone };
                     const options = {
                       method: "POST",
                       body: JSON.stringify(data),
