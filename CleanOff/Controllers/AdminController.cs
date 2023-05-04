@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CleanOff.Controllers;
 
-[Route("/{controller}")]
+[Route("/[controller]")]
 [Controller]
 public class AdminController : Controller
 {
@@ -28,7 +28,7 @@ public class AdminController : Controller
         _adminManager = adminManager;
     }
     [AdminAuthorizeFilter]
-    [HttpGet("/admin")]
+    [HttpGet("")]
     public async Task<IActionResult> Index()
     {
         var employees = await _employeeManager.GetAllEmployeesAsync();
@@ -38,13 +38,13 @@ public class AdminController : Controller
         return View(employeeViewModels);
     }
     [AdminAuthorizeFilter]
-    [HttpGet("/admin/createEmployee")]
+    [HttpGet("createEmployee")]
     public IActionResult CreateEmployee()
     {
         return View();
     }
     [AdminAuthorizeFilter]
-    [HttpPost("/admin/createEmployee")]
+    [HttpPost("createEmployee")]
     public async Task<IActionResult> CreateEmployee(EmployeeRegisterDto registerDto)
     {
         var employee = new Employee(registerDto);
@@ -62,14 +62,14 @@ public class AdminController : Controller
         }
     }
 
-    [HttpGet("/admin/login")]
+    [HttpGet("login")]
     [AllowAnonymous]
     public IActionResult Login()
     {
         return View();
     }
     [AllowAnonymous]
-    [HttpPost("/admin/login")]
+    [HttpPost("login")]
     public async Task<IActionResult> Login(AdminLoginDto loginDto)
     {
         var email = loginDto.Email;

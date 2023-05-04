@@ -103,20 +103,20 @@
                             event.stopPropagation();
                             const address = document.getElementsByClassName('address-input')[0].value;
                             const description = document.getElementsByClassName('description-text-area')[0].value;
-                            const convenientDateTime = document.getElementById('convenient-datetime').value; 
+                            const convenientDateTime = new Date(document.getElementById('convenient-datetime').value).toISOString();
                             const flexRadioDefault1 = document.getElementById('flexRadioDefault1');
-                            const needDelivery = flexRadioDefault1.checked
-                            console.log(address);
-                            console.log(description);
-                            console.log(convenientDateTime);
-                            console.log(needDelivery);
-                            // Perform further actions with the captured form values
+                            const needDelivery = flexRadioDefault1.checked;
                             
+                            
+                            console.log(typeof(convenientDateTime))
+                           
                             const orderData = {
-                                        RequestDate: convenientDateTime,
+                                        RequestDateString: convenientDateTime,
                                         Description: description,
                                         NeedDelivery: needDelivery
                                     };
+                                    
+                            console.log(orderData);
                             
                             fetch('/profile/create_order', {
                                 method: 'POST',

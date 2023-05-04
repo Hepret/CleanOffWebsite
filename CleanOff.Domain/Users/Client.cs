@@ -12,6 +12,7 @@ public class Client
     public string Name { get; set; } = null!;
     public string Surname { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
+    public string Phone { get; set; } = null!;
     public string Email { get; set; } = null!;
     public List<Order> Orders { get; set; } = null!;
     
@@ -24,5 +25,6 @@ public class Client
         Surname = registerDto.Surname;
         Email = registerDto.Email;
         PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
+        Phone = registerDto.Phone;
     }
 }

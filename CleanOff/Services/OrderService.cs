@@ -12,11 +12,12 @@ public class OrderService
         _context = context;
     }
 
-    public async Task CreateOrder(Order order)
+    public async Task CreateOrderAsync(Order order)
     {
         try
         {
             await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
             // TODO Логирование создание заказа
         }
         catch

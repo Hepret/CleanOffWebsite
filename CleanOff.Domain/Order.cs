@@ -12,10 +12,11 @@ public class Order
     public Guid OrderId { get; set; }
     public OrderState OrderState { get; set; }
     public Client Client { get; set; } = null!;
-    public Employee Employee { get; set; } = null!;
+    public Employee? Employee { get; set; } 
     public DateTime RequestDate { get; set; }
     public DateTime? DateOfIssue { get; set; }
     public string Description { get; set; } = null!;
+    public bool NeedDelivery { get; set; }
     public decimal? Price { get; set; }
 
     public Order()
@@ -24,10 +25,11 @@ public class Order
 
     public Order(OrderViewModel orderViewModel)
     {
+        OrderId = Guid.NewGuid();
         OrderState = OrderState.New;
-        Client = orderViewModel.Client;
-        RequestDate = orderViewModel.RequestDate;
+        RequestDate = DateTime.Parse(orderViewModel.RequestDateString).ToUniversalTime();
         DateOfIssue = null;
         Description = orderViewModel.Description;
+        NeedDelivery = orderViewModel.NeedDelivery;
     }
 }

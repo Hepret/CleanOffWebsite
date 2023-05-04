@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CleanOff.Controllers;
 
 [Controller]
-[Route(("/{controller}"))]
+[Route(("/[controller]"))]
 public class ProfileController: Controller
 {
     private readonly IClientManager _clientManager;
@@ -24,15 +24,11 @@ public class ProfileController: Controller
         _orderService = orderService;
     }
 
+    #region Авторизация пользователя
+
     [HttpGet("signIn")]
     [AllowAnonymous]
     public IActionResult Index()
-    {
-        return View();
-    }
-    [HttpGet("")]
-    [ClientAuthorizationFilter]
-    public IActionResult UserAccount()
     {
         return View();
     }
@@ -44,22 +40,52 @@ public class ProfileController: Controller
         await HttpContext.SignOutAsync();
         return RedirectToAction("Index", "Profile");
     }
+    #endregion
+
+    [HttpGet("")]
+    [ClientAuthorizationFilter]
+    public IActionResult UserAccount()
+    {
+        return View();
+    }
+
+    
 
     [HttpPost("create_order")]
     public async Task<IActionResult> CreateOrder(OrderViewModel orderViewModel)
     {
+        var date = await Request.ReadFromJsonAsync<OrderViewModel>();
+        
         var client = await GetClient();
-        orderViewModel.Client = client;
-        var order = new Order(orderViewModel);
+        var order = new Order(date)
+        {
+            Client = client
+        };
         try
         {
-            await _orderService.CreateOrder(order);
+            await _orderService.CreateOrderAsync(order);
+            return Ok("Заказ создан");
         }
         catch (Exception e)
         {
-            return BadRequest("Не удалось создать заказ попробуйте еще раз");
+            return BadRequest("Ошибка создания заказа");
+            throw;
         }
-        return Ok("Заказ создан");
+        
+
+        // var order = new Order(orderViewModel)
+        // {
+        //     Client = client
+        // };
+        // try
+        // {
+        //     await _orderService.CreateOrder(order);
+        // }
+        // catch (Exception e)
+        // {
+        //     return BadRequest("Не удалось создать заказ попробуйте еще раз");
+        // }
+        return Ok();
     }
 
     [NonAction]

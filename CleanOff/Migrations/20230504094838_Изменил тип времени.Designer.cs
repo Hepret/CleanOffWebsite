@@ -3,6 +3,7 @@ using System;
 using CleanOff.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CleanOff.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230504094838_Изменил тип времени")]
+    partial class Изменилтипвремени
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +34,7 @@ namespace CleanOff.Migrations
                     b.Property<Guid>("ClientId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime?>("DateOfIssue")
+                    b.Property<DateTimeOffset?>("DateOfIssue")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
@@ -50,7 +53,7 @@ namespace CleanOff.Migrations
                     b.Property<decimal?>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<DateTime>("RequestDate")
+                    b.Property<DateTimeOffset>("RequestDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("OrderId");

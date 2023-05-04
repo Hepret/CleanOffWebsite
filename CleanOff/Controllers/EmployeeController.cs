@@ -28,11 +28,10 @@ public class EmployeeController : Controller
         _employeeManager = employeeManager;
         _clientManager = clientManager;
     } 
-    [HttpGet]
+    [HttpGet("/[controller]")]
     public IActionResult Index()
     {
-        // Основная страница
-        throw new NotImplementedException();
+        return View();
     }
 
     
@@ -40,8 +39,6 @@ public class EmployeeController : Controller
     
     [HttpGet("login")]
     [AllowAnonymous]
-    // [TypeFilter(typeof(AllowAnonymousFilter))]
-    // [TypeFilter(typeof(UserAuthorizeFilter), Arguments = new object[]{"Employee", "Employee"})]
     public IActionResult Login()
     {
         return View();
@@ -49,8 +46,6 @@ public class EmployeeController : Controller
     
     [HttpPost("login")]
     [AllowAnonymous]
-    // [TypeFilter(typeof(UserAuthorizeFilter), Arguments = new object[]{"Employee", "employee"})]
-
     public async Task<IActionResult> Login(EmployeeLoginDto loginDto)
     {
         var email = loginDto.Email;
