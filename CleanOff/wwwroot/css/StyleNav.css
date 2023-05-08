@@ -31,7 +31,7 @@ CORE STYLES
     transform: translateX(-50%);
     z-index: 9999;
     --rLinkColor: var(--menuLinkColor, currentColor);
-    font-size: 20px; /* Измените размер шрифта по вашему выбору */
+    font-size: 25px; /* Измените размер шрифта по вашему выбору */
     text-align: center; /* Добавьте выравнивание текста по центру */
 }
 
