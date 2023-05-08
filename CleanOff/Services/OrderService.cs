@@ -1,5 +1,7 @@
 ﻿using CleanOff.Domain;
+using CleanOff.Domain.Users;
 using CleanOff.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanOff.Services;
 
@@ -27,5 +29,11 @@ public class OrderService
         }
         
     }
-    
+
+    public async Task<List<Order>> GetClientOrders(Client client)
+    {
+        var order =  await _context.Orders.Where(order => order.Client.ClientId == client.ClientId).ToListAsync();
+        return order;
+    }
+
 }
