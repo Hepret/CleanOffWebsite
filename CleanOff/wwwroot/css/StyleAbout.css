@@ -1,5 +1,5 @@
 
-/*.intro {
+.intro {
     display: flex;
     align-items: center;
     width: 100vw;
@@ -10,13 +10,13 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 80%);
     overflow: hidden;
     padding: 0;
-}*/
+}
 
-/*.paragraphs {
+.paragraphs {
     font-size: 20px;
     font-family: Arial, sans-serif;
     line-height: 1.5;
-}*/
+}
 
 .services {
     list-style: none;
@@ -51,6 +51,21 @@
     height: 20%;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.developers {
+    line-height: 1.6;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    background-color: #f8f8f8;
+    float: left;
+    width: 30%;
+    height: 20%;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .text {
@@ -210,3 +225,5 @@ p {
         flex: 1;
     }
 }
+
+
