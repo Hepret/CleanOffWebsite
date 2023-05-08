@@ -1,4 +1,22 @@
-﻿.sidebar {
+﻿.butexit {
+    display: inline-block;
+    justify-content: center center;
+    align-items: center center;
+    left: 50%;
+    right 50%;
+    height: 50vh;
+    margin-left: 25%;
+    margin-top: 5%;
+    padding: 20px 400px;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.sidebar {
     margin-top: 5%;
     height: 100%;
     width: 200px;
@@ -123,3 +141,4 @@
     vertical-align: -.125em;
     fill: currentColor;
 }
+

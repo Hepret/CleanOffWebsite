@@ -151,11 +151,9 @@
   </form>
 
   <form id="profile" style="display:none"> @*Мой профиль*@
-      <div class="d-flex justify-content-center align-items-center vh-100">
-          <button class="btn btn-lg btn-danger logoutBtn">
+        <button type="button" class="butexit logoutBtn">
               ВЫЙТИ
           </button>
-      </div>
       <script>
           const logoutBtn = document.getElementsByClassName('logoutBtn')[0];
           logoutBtn.addEventListener('click', (event) => {
