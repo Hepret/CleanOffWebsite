@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model List<CleanOff.Domain.Order>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -148,13 +149,13 @@
 
   </form>
 
-  <form id="profile" style="display:none"> @*Мой профиль*@
-      <div class="d-flex justify-content-center align-items-center vh-100">
-          <button class="btn btn-lg btn-danger logoutBtn">
-              ВЫЙТИ
-          </button>
-      </div>
-      <script>
+<form id="profile" style="display:none"> @*Мой профиль*@
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <button class="btn btn-lg btn-danger logoutBtn">
+            ВЫЙТИ
+        </button>
+    </div>
+    <script>
           const logoutBtn = document.getElementsByClassName('logoutBtn')[0];
           logoutBtn.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -167,26 +168,54 @@
           }
       
       </script>
-        @* ПОСМОТРИ СКРИПТ ПОЖАЛУЙСТА*@
-        @* <script> *@
-        @*     const logoutButton = document.querySelector('.btn-danger'); *@
-        @*     logoutButton.addEventListener('click', () => { *@
-        @*         fetch('/Account/Logout', { *@
-        @*             method: 'POST', *@
-        @*             headers: { *@
-        @*                 'Content-Type': 'application/x-www-form-urlencoded' *@
-        @*             }, *@
-        @*             body: '' *@
-        @*         }) *@
-        @*             .then(response => { *@
-        @*                 if (response.redirected) { *@
-        @*                     window.location.href = response.url; *@
-        @*                 } *@
-        @*             }) *@
-        @*             .catch(error => console.error(error)); *@
-        @*     }); *@
-        @* </script> *@
-  </form>
+    @* ПОСМОТРИ СКРИПТ ПОЖАЛУЙСТА*@
+    @* <script> *@
+    @*     const logoutButton = document.querySelector('.btn-danger'); *@
+    @*     logoutButton.addEventListener('click', () => { *@
+    @*         fetch('/Account/Logout', { *@
+    @*             method: 'POST', *@
+    @*             headers: { *@
+    @*                 'Content-Type': 'application/x-www-form-urlencoded' *@
+    @*             }, *@
+    @*             body: '' *@
+    @*         }) *@
+    @*             .then(response => { *@
+    @*                 if (response.redirected) { *@
+    @*                     window.location.href = response.url; *@
+    @*                 } *@
+    @*             }) *@
+    @*             .catch(error => console.error(error)); *@
+    @*     }); *@
+    @* </script> *@
+</form>
+
+@if (Model.Count != 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Описание заказа</th>
+                <th>Статус</th>
+                <th>Дата создания</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Description</td>
+                    <td>@order.OrderState</td>
+                    <td>@order.RequestDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h6>Пока заказов нет</h6>
+}
    
 </body>
 </html>

@@ -44,9 +44,11 @@ public class ProfileController: Controller
 
     [HttpGet("")]
     [ClientAuthorizationFilter]
-    public IActionResult UserAccount()
+    public async Task<IActionResult> UserAccount()
     {
-        return View();
+        var client = await GetClient();
+        var clientOrders = await _orderService.GetClientOrders(client);
+        return View(clientOrders);
     }
 
     
@@ -71,21 +73,6 @@ public class ProfileController: Controller
             return BadRequest("Ошибка создания заказа");
             throw;
         }
-        
-
-        // var order = new Order(orderViewModel)
-        // {
-        //     Client = client
-        // };
-        // try
-        // {
-        //     await _orderService.CreateOrder(order);
-        // }
-        // catch (Exception e)
-        // {
-        //     return BadRequest("Не удалось создать заказ попробуйте еще раз");
-        // }
-        return Ok();
     }
 
     [NonAction]
