@@ -13,36 +13,45 @@ header {
     text-decoration: none;
     color: #808080;
 }
-.intro {
+
+.glass {
+    height: 600px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 70vh;
+    align-items: center;
     background: url("../img/wom.jpg") center no-repeat;
     background-size: cover;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 80%);
 }
 
-.intro_title_inner {
-    text-align: center;
-    max-width: 580px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #7fc7ff;
-}
+    .glass span {
+        position: relative;
+        text-align: center;
+        color: #FFF;
+        width: 80%;
+        font-size: 36px;
+        line-height: 40px;
+        padding: 40px 0;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2), 0 16px 28px rgba(0,0,0,0.2);
+        text-shadow: 0 0 12px rgba(0,0,0,0.6);
+        text-transform: uppercase;
+        font-family: 'Roboto', Tahoma, sans-serif;
+        letter-spacing: 4px;
+        z-index: 1;
+        overflow: hidden;
+    }
 
-.intro_title {
-    font-size: 44px;
-    font-weight: 200;
-    font-family: "Century Gothic", Arial, sans-serif;
-}
-
-.intro_descr {
-    font-size: 34px;
-    font-weight: 200;
-    font-family: "Century Gothic", Arial, sans-serif;
-}
+        .glass span:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            height: 200%;
+            width: 200%;
+            background: url("../img/wom.jpg") center no-repeat;
+            filter: blur(8px);
+            z-index: -1;
+        }
 
 .img_worker {
     width: 60%;
@@ -57,33 +66,35 @@ header {
 
 h1 {
     margin-bottom: 30px;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .textcols {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 80px;
 }
 
 .textcols-item {
-    flex: 1 1 300px;
-    max-width: 300px;
+    flex: 1 1 500px;
+    max-width: 500px;
     padding: 20px;
     background-color: #f0f0f0;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 h2 {
     margin-bottom: 20px;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .description_column {
-    font-size: 16px;
+    font-size: 30px;
     color: #808080;
     line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
 @media screen and (max-width: 768px) {
