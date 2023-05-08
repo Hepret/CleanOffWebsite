@@ -31,6 +31,8 @@ CORE STYLES
     transform: translateX(-50%);
     z-index: 9999;
     --rLinkColor: var(--menuLinkColor, currentColor);
+    font-size: 20px; /* Измените размер шрифта по вашему выбору */
+    text-align: center; /* Добавьте выравнивание текста по центру */
 }
 
 .menu__link {
@@ -60,19 +62,32 @@ PRESENTATION STYLES
 =====
 */
 
-.menu {
-    background-color: var(--menuBackgroundColor, #f0f0f0);
-    box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
-}
+@media (max-width: 767px) {
+    .menu {
+        margin: 0 auto;
+        max-width: 800px; /* Замените на желаемую ширину навбара */
+        width: 100%;
+        padding: 20px;
+        background-color: #f9f9f9; /* Замените на желаемый цвет фона навбара */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Замените на желаемую тень */
+        text-align: center;
+        transition: top 0.3s;
+    }
 
-.menu__list {
-    display: flex;
-}
+    .menu__list {
+        flex-direction: column;
+    }
 
-.menu__link {
-    padding: var(--menuLinkPadding, 1.6rem 2.5rem);
-    font-weight: 700;
-    text-transform: uppercase;
+    .menu__link {
+        padding: var(--menuLinkPadding, 1.6rem 2.5rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block; /* Добавьте свойство для расположения элементов в одну линию */
+    }
+
+        .menu__link:first-child {
+            border-top: none;
+        }
 }
 
 /* 
@@ -143,12 +158,12 @@ body {
     flex-direction: column;
 }
 
-.page {
-    box-sizing: border-box;
-    max-width: 711px; /* АААА ЭТО ПОМЕНЯЛ ЧТОБЫ КНОПКИ ШИРЕ СТАЛИ. ВОПРОС. ТАК НЕ ТАК?*/
-    padding-left: .75rem;
-    padding-right: .75rem;
-    margin: auto;
+.containernav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: top 0.3s;
 }
 
 .page__menu:nth-child(n+2) {
