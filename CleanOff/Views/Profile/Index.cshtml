@@ -59,7 +59,7 @@
                         if (response.ok) {
                             const setCookieHeader = response.headers.get("Set-Cookie");
                             document.cookie = setCookieHeader;
-                            
+                            window.location.href = "/profile";
                         }
                         alert(message);
                         console.log(data);
