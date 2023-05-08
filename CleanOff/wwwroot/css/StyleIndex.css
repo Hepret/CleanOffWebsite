@@ -11,6 +11,7 @@ body {
 header {
     background-color: #f0f0f0;
     padding: 10px;
+    z-index: 9999;
 }
 
 nav {
@@ -32,6 +33,7 @@ nav {
 }
 .intro {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 70vh;
@@ -58,6 +60,12 @@ nav {
     font-size: 34px;
     font-weight: 200;
     font-family: "Century Gothic", Arial, sans-serif;
+}
+
+.img_worker {
+    width: 60%;
+    height: auto;
+    margin-top: 30px;
 }
 
 .services {
