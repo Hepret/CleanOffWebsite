@@ -1,13 +1,5 @@
-header {
-    z-index: 9999;
-}
 
-body {
-    margin-top: 5%;
-    overflow-x: hidden;
-}
-
-.intro {
+/*.intro {
     display: flex;
     align-items: center;
     width: 100vw;
@@ -18,7 +10,7 @@ body {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 80%);
     overflow: hidden;
     padding: 0;
-}
+}*/
 
 .paragraphs {
     font-size: 20px;
@@ -61,14 +53,8 @@ body {
     margin-right: 5%;
 }
 
-.title {
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
 .text {
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 20px;
 }
 
 h1 {
@@ -179,34 +165,6 @@ p {
     vertical-align: -.125em;
     fill: currentColor;
 }
-
-.container {
-    max-width: 960px;
-}
-
-/*
- * Custom translucent site header
- */
-
-.site-header {
-    background-color: rgba(0, 0, 0, .85);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-}
-
-    .site-header a {
-        color: #8e8e8e;
-        transition: color .15s ease-in-out;
-    }
-
-        .site-header a:hover {
-            color: #fff;
-            text-decoration: none;
-        }
-
-/*
- * Dummy devices (replace them with your own or something else entirely!)
- */
 
 .product-device {
     position: absolute;
