@@ -1,0 +1,15 @@
+﻿.navbar-nav .nav-item {
+    margin-right: 10px;
+}
+
+.navbar-nav .ml-auto .nav-item {
+    margin-right: 0;
+}
+
+.navbar-brand {
+    display: none;
+}
+
+.navbar-nav.mr-auto .nav-item {
+    margin-right: 20px;
+}

@@ -1,0 +1,31 @@
+﻿@model CleanOff.Domain.Order
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_EmployeePanelLayout";
+}
+
+<h1>Страница заказа</h1>
+
+<h2>Информация о заказе:</h2>
+<h3>Номер заказа @Model.OrderId</h3>
+<h3>Статус заказа: @Model.OrderState</h3>
+<h3>Описани заказа:</h3>
+<h3>@Model.Description</h3>
+
+<h2>Информация о клиенте</h2>
+<h3>Имя: @Model.Client.Name</h3>
+<h3>Фамилия: @Model.Client.Surname</h3>
+<h3>Номер: @Model.Client.Phone</h3>
+
+
+<button>Удалить</button>
+<button>Изменить</button>
+<button>Подтвердить</button>
+
+<h1>Подтверждение заказа</h1>
+
+<h2>Информация о заказе:</h2>
+<h3>Номер заказа @Model.OrderId</h3>
+<h3>Описание заказа:</h3>
+<h3>@Model.Description</h3>
