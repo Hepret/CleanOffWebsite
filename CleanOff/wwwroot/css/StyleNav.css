@@ -1,171 +1,36 @@
-﻿.r-link {
-    display: var(--rLinkDisplay, inline-flex) !important;
+﻿/* Обнуляем отступы и маргины */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-    .r-link[href] {
-        color: var(--rLinkColor) !important;
-        text-decoration: var(--rLinkTextDecoration, none) !important;
-    }
-
-.r-list {
-    padding-left: var(--rListPaddingLeft, 0) !important;
-    margin-top: var(--rListMarginTop, 0) !important;
-    margin-bottom: var(--rListMarginBottom, 0) !important;
-    list-style: var(--rListListStyle, none) !important;
-    width: 100%;
-    text-align: center;
-    height 100%;
+/* Стили для навбара */
+.containernav {
+    background-color: #f5f5f5; /* Цвет фона */
+    padding: 10px; /* Внутренний отступ */
 }
 
+.menu__list {
+    list-style-type: none; /* Убираем маркеры списка */
+    display: flex; /* Отображаем элементы горизонтально */
+}
 
-/*
-=====
-CORE STYLES
-=====
-*/
-
-.menu {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    --rLinkColor: var(--menuLinkColor, currentColor);
-    font-size: 25px; /* Измените размер шрифта по вашему выбору */
-    text-align: center; /* Добавьте выравнивание текста по центру */
+.menu__group {
+    margin-right: 10px; /* Отступ между пунктами меню */
 }
 
 .menu__link {
-    display: var(--menuLinkDisplay, block);
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #333; /* Цвет текста */
+    font-size: 16px; /* Размер текста */
+    transition: color 0.3s; /* Плавное изменение цвета при наведении */
 }
 
-    /* 
-focus state 
-*/
-
-    .menu__link:focus {
-        outline: var(--menuLinkOutlineWidth, 2px) solid var(--menuLinkOutlineColor, currentColor);
-        outline-offset: var(--menuLinkOutlineOffset);
+    .menu__link:hover {
+        color: #888; /* Цвет текста при наведении */
     }
-
-/* 
-fading siblings
-*/
-
-.menu:hover .menu__link:not(:hover) {
-    --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
-}
-
-/*
-=====
-PRESENTATION STYLES
-=====
-*/
-
-@media (max-width: 767px) {
-    .menu {
-        margin: 0 auto;
-        max-width: 800px; /* Замените на желаемую ширину навбара */
-        width: 100%;
-        padding: 20px;
-        background-color: #f9f9f9; /* Замените на желаемый цвет фона навбара */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Замените на желаемую тень */
-        text-align: center;
-        transition: top 0.3s;
-    }
-
-    .menu__list {
-        flex-direction: column;
-    }
-
-    .menu__link {
-        padding: var(--menuLinkPadding, 1.6rem 2.5rem);
-        font-weight: 700;
-        text-transform: uppercase;
-        display: inline-block; /* Добавьте свойство для расположения элементов в одну линию */
-    }
-
-        .menu__link:first-child {
-            border-top: none;
-        }
-}
-
-/* 
-=====
-TEXT UNDERLINED
-=====
-*/
 
 .text-underlined {
-    position: relative;
-    overflow: hidden;
-    will-change: color;
-    transition: color .25s ease-out;
-}
-
-    .text-underlined::before,
-    .text-underlined::after {
-        content: "";
-        width: 0;
-        height: 3px;
-        background-color: var(--textUnderlinedLineColor, currentColor);
-        will-change: width;
-        transition: width .1s ease-out;
-        position: absolute;
-        bottom: 0;
-    }
-
-    .text-underlined::before {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .text-underlined::after {
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    .text-underlined:hover::before,
-    .text-underlined:hover::after {
-        width: 100%;
-        transition-duration: .2s;
-    }
-
-/*
-=====
-SETTINGS
-=====
-*/
-
-.page__custom-settings {
-    --menuBackgroundColor: #6c5ce7;
-    --menuLinkColor: #fff;
-    --menuLinkColorUnactive: #241c69;
-    --menuLinkOutlineOffset: -.5rem;
-}
-
-/*
-=====
-DEMO
-=====
-*/
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.containernav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    transition: top 0.3s;
-}
-
-.page__menu:nth-child(n+2) {
-    margin-top: 5rem;
+    border-bottom: 1px solid #333; /* Подчеркиваем текст линией */
 }

@@ -1,7 +1,4 @@
-﻿* {
-    box-sizing: border-box;
-}
-
+﻿
 body {
     margin: 0;
     padding: 0;
@@ -10,22 +7,8 @@ body {
 
 header {
     background-color: #f0f0f0;
-    padding: 16px;
     z-index: 9999;
 }
-
-nav {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.nav_list {
-    list-style: none;
-}
-
-    .nav_list > li {
-        margin-right: 10px;
-    }
 
 .contacts {
     text-decoration: none;
