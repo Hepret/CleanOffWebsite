@@ -1,4 +1,22 @@
-﻿.sidebar {
+﻿.butexit {
+    display: inline-block;
+    justify-content: center center;
+    align-items: center center;
+    left: 50%;
+    right 50%;
+    height: 50vh;
+    margin-left: 25%;
+    margin-top: 5%;
+    padding: 20px 400px;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.sidebar {
     margin-top: 5%;
     height: 100%;
     width: 200px;
@@ -11,8 +29,21 @@
     padding-top: 20px;
 }
 
-    /* Style the sidebar links */
-.sidebar a {
+.btn {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .btn:focus {
+        outline: none;
+        box-shadow: none;
+        /* Style the sidebar links */
+        .sidebar a {
     display: block;
     color: black;
     padding: 16px;
@@ -71,23 +102,6 @@
     fill: currentColor;
 }
 
-.nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
 
 @media (min-width: 992px) {
     .rounded-lg-3 {
@@ -128,20 +142,3 @@
     fill: currentColor;
 }
 
-.nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-}
-
-    .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
