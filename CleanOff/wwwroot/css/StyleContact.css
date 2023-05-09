@@ -9,13 +9,9 @@ body {
 }
 
 .container1 {
-    width: 50%;
-    float: right;
-    position: fixed;
-    top: 0;
-    left: 0;
+    width: 100%;
     max-width: 1200px;
-    margin-left: auto;
+    margin: 0 5%;
     padding: 20px;
 }
 
@@ -71,23 +67,9 @@ body {
         margin-bottom: 10px;
     }
 
-
 .image {
-    float: left;
-    line-height: 1.6;
-    border: 2px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
+    width: 200%;
+    text-align: center;
+    margin-top: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    margin-bottom: 30px;
-    background-color: #f8f8f8;
-    float: left;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.wrapper {
-    max-width: 1200px; /* измените значение на нужную вам ширину */
-    margin: 0 auto; /* центрирует контейнер по горизонтали */
 }

@@ -2,15 +2,16 @@
 body {
     margin: 0;
     height: 100%;
-    background-color: #afdefe;
+    background-color: #f2f2f2;
+    background-image: url("../img/back.png");
+    background-repeat: no-repeat; /* отключает повторение картинки */
+    background-size: cover; /* масштабирует картинку, чтобы она заполнила весь фон */
+    background-position: center center;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    padding-top: 130px;
     padding-bottom: 40px;
-    background-color: #afdefe;
+    background-color: #f2f2f2;
 }
 
 .modal-sheet .modal-dialog {
@@ -32,8 +33,9 @@ body {
 
 
 .form-signin {
-    max-width: 330px;
+    max-width: 400px;
     padding: 15px;
+    padding-top:7%;
 }
 
 .form-signin .form-floating:focus-within {
