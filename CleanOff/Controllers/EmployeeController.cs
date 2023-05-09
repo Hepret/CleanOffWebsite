@@ -18,20 +18,22 @@ namespace CleanOff.Controllers;
 [TypeFilter(typeof(UserAuthorizeFilter), Arguments = new object[]{"Employee", "Employee"})]
 public class EmployeeController : Controller
 {
-    private readonly ApplicationDbContext _dbContext;
     private readonly IEmployeeManager _employeeManager;
     private readonly IClientManager _clientManager;
+    private readonly OrderService _orderService;
 
-    public EmployeeController(ApplicationDbContext dbContext, IEmployeeManager employeeManager, IClientManager clientManager)
+
+    public EmployeeController(ApplicationDbContext dbContext, IEmployeeManager employeeManager, IClientManager clientManager, OrderService orderService)
     {
-        _dbContext = dbContext;
         _employeeManager = employeeManager;
         _clientManager = clientManager;
+        _orderService = orderService;
     } 
     [HttpGet("/[controller]")]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var newOrders = await _orderService.GetNewOrdersAsync();
+        return View(newOrders);
     }
 
     
@@ -75,9 +77,50 @@ public class EmployeeController : Controller
     #endregion
 
     #region Обработка заказов
-
     
+    [HttpGet("order/check")]
+    public async Task<IActionResult> CheckOrder(Guid orderId)
+    {
+        var order = await _orderService.GetOrderByIdAsync(orderId);
+        if (order == null) BadRequest("Такого заказа не существует");
+        return View(order);
+    }
+    
+    
+    [HttpGet("order")]
+    public async Task<IActionResult> GetOrder(Guid orderId)
+    {
+        var order = await _orderService.GetOrderByIdAsync(orderId);
+        if (order == null) BadRequest("Такого заказа не существует");
+        return View(order);
+    }
 
+    [HttpPost("order/confirm")]
+    public async Task<IActionResult> ConfirmOrder(Guid orderId, decimal price)
+    {
+        throw new NotImplementedException();
+    }
+    
+    [HttpGet("order/reject")]
+    public async Task<IActionResult> RejectOrder(Guid orderId)
+    {
+
+        try
+        {
+            var order = await _orderService.GetOrderByIdAsync(orderId);
+            await _orderService.RejectOrderAsync(order);
+            return Ok("Заказ отменен");
+        }
+        catch (Exception e)
+        {
+            return BadRequest("Ошибка удаления заказа");
+            Console.WriteLine(e);
+            // TODO Добавить обработку ошиюок
+            // TODO Добавить логирование
+        }
+        
+    }
+    
     #endregion
     
 }

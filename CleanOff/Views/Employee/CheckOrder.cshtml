@@ -1,0 +1,50 @@
+﻿@model CleanOff.Domain.Order
+
+@{
+    ViewBag.Title = "Проверка заказа";
+    Layout = "_EmployeePanelLayout";
+}
+
+<h1>Подтвержление заказа</h1>
+
+<h2>Информация о заказе:</h2>
+<h3>Номер заказа @Model.OrderId</h3>
+<h3>Описани заказа:</h3>
+<h3>@Model.Description</h3>
+
+<h2>Информация о клиенте</h2>
+<h3>Имя: @Model.Client.Name</h3>
+<h3>Фамилия: @Model.Client.Surname</h3>
+<h3>Номер: @Model.Client.Phone</h3>
+
+
+<button>Удалить</button>
+<button>Изменить</button>
+<button>Подтвердить</button>
+
+<h1>Подтверждение заказа</h1>
+
+<h2>Информация о заказе:</h2>
+<h3>Номер заказа @Model.OrderId</h3>
+<h3>Описание заказа:</h3>
+<h3>@Model.Description</h3>
+
+
+<form method="get" action="/employee/order/confirm?orderId=@Model.OrderId">
+    <label for="price">Цена заказа:</label>
+    <input type="number" name="price" id="price" />
+    <button type="submit">Подтвердить</button>
+</form>
+
+<form method="get" action="/employee/order/update">
+    <button type="button">Изменить</button>
+</form>
+
+
+<button type="button"><a href="/employee/order/reject?orderId=@Model.OrderId">Удалить</a></button>
+
+
+
+
+
+
