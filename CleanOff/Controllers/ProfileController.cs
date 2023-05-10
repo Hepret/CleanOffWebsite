@@ -47,8 +47,7 @@ public class ProfileController: Controller
     public async Task<IActionResult> UserAccount()
     {
         var client = await GetClient();
-        var clientOrders = await _orderService.GetClientOrdersAsync(client);
-        return View(clientOrders);
+        return View(client);
     }
 
     

@@ -34,12 +34,12 @@ public class ClientManager : IClientManager
 
     public async Task<Client?> FindClientById(Guid id)
     {
-        var client = await  _context.Clients.FirstOrDefaultAsync(c => c.ClientId == id);
+        var client = await  _context.Clients.Include(cl => cl.Orders).FirstOrDefaultAsync(c => c.ClientId == id);
         return client;
     }
     public async Task<Client?> FindClientByEmail(string email)
     {
-        var client = await  _context.Clients.FirstOrDefaultAsync(c => c.Email == email);
+        var client = await  _context.Clients.Include(cl => cl.Orders).FirstOrDefaultAsync(c => c.Email == email);
         return client;
     }
 }

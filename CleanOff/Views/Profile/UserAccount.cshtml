@@ -1,4 +1,4 @@
-﻿@model List<CleanOff.Domain.Order>
+﻿@model CleanOff.Domain.Users.Client
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,11 +150,11 @@
             <script src="checkout.js"></script>
 
   </form>
-  <form id="profile" style="display:none"> @*Мой профиль*@
-        <button type="button" class="butexit logoutBtn">
-              ВЫЙТИ
-          </button>
-      <script>
+<form id="profile" style="display:none"> @*Мой профиль*@
+    <button type="button" class="butexit logoutBtn">
+        ВЫЙТИ
+    </button>
+    <script>
           const logoutBtn = document.getElementsByClassName('logoutBtn')[0];
           logoutBtn.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -188,7 +188,8 @@
     @* </script> *@
 </form>
 
-@if (Model.Count != 0)
+
+@if (Model.Orders.Count != 0)
 {
     <table class="table table-striped">
         <thead>
@@ -200,7 +201,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var order in Model)
+            @foreach (var order in Model.Orders)
             {
                 <tr>
                     <td>@order.Description</td>
