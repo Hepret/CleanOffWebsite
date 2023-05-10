@@ -60,7 +60,6 @@
                             document.cookie = setCookieHeader;
                             window.location.href = "/profile";
                         }
-                        //alert(message);
                         console.log(data);
                       } catch (error) {
                       }
@@ -71,7 +70,11 @@
             <button onclick="switchForms()" class="w-100 btn btn-lg btn-outline-primary mt-3 bg-white new-user" type="button">Нет, я новенький</button>
 
                 <a class="w-100 btn btn-link mt-5" href="../Admin/Login" @*type="submit"*@>
-                    Я вообще тут администратор
+                    Я вообще тут администратор (удалить)
+                </a>
+
+                <a class="w-100 btn btn-link mt-5" href="../Employee/Login" @*type="submit"*@>
+                    Я вообще тут работник (удалить)
                 </a>
         </div>
     </form>
