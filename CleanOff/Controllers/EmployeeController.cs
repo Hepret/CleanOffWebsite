@@ -1,4 +1,5 @@
-﻿using CleanOff.Domain;
+﻿using System.Security.Claims;
+using CleanOff.Domain;
 using CleanOff.Domain.Users;
 using CleanOff.Domain.ViewModels;
 using CleanOff.Exceptions;
@@ -95,13 +96,19 @@ public class EmployeeController : Controller
         return View(order);
     }
 
-    [HttpPost("order/confirm")]
+    [HttpGet("order/check/confirm")]
     public async Task<IActionResult> ConfirmOrder(Guid orderId, decimal price)
     {
-        throw new NotImplementedException();
+
+        var order = await _orderService.GetOrderByIdAsync(orderId);
+        order.Price = price;
+        var employee = await GetMe();
+        order.Employee = employee;
+        await _orderService.ConfirmOrder(order);
+        return RedirectToAction(actionName: "Index");
     }
     
-    [HttpGet("order/reject")]
+    [HttpGet("order/check/reject")]
     public async Task<IActionResult> RejectOrder(Guid orderId)
     {
 
@@ -120,7 +127,37 @@ public class EmployeeController : Controller
         }
         
     }
-    
+
+    [HttpGet("order/check/updateAndConfirm")]
+    public async Task<IActionResult> UpdateAndConfirm(Guid orderId)
+    {
+        var order = await _orderService.GetOrderByIdAsync(orderId);
+        return View(order);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateAndConfirm(Order order)
+    {
+        try
+        {
+            await _orderService.ConfirmOrder(order);
+            return Ok("Заказ подтвержден");
+        }
+        catch (Exception e)
+        {
+            return BadRequest("Заказ не добавлен");
+        }
+        
+        
+    }
     #endregion
+
+    [NonAction]
+    public async Task<Employee> GetMe()
+    {
+        var employeeId = Guid.Parse(User.FindFirstValue("id") ?? throw new InvalidOperationException());
+        return (await _employeeManager.FindByIdAsync(employeeId))!;
+        
+    }
     
 }

@@ -1,0 +1,90 @@
+﻿@model CleanOff.Domain.Order
+
+@{
+    Layout = "_EmployeePanelLayout";
+}
+
+<form id="make" class="needs-validation" novalidate style="display:none"> @*Создать заказ*@
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2 class="text-center mb-4">Создать заказ</h2>
+                <div class="form-group">
+                    <label for="address">Адрес</label>
+                    <input type="text" class="form-control address-input" id="address"  placeholder="Введите адрес">
+                </div>
+                <div class="form-group">
+                    <label for="additional-info">Описание заказа</label>
+                    <textarea class="form-control description-text-area" id="additional-info" rows="3" placeholder="Введите дополнительную информацию"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="convenient-datetime">Удобная дата и время</label>
+                    <input type="datetime-local" class="form-control" id="convenient-datetime">
+                </div>
+                <hr class="my-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Доставка
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Клиент сам приедет
+                    </label>
+                </div>
+                <hr class="my-4">
+                <button class="w-100 btn btn-primary btn-lg createOrderBtn">Создать заказ</button>
+                <script>
+                        const createOrderBtn = document.getElementsByClassName('createOrderBtn')[0];
+                        
+                        createOrderBtn.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            const address = document.getElementsByClassName('address-input')[0].value;
+                            const description = document.getElementsByClassName('description-text-area')[0].value;
+                            const convenientDateTime = new Date(document.getElementById('convenient-datetime').value).toISOString();
+                            const flexRadioDefault1 = document.getElementById('flexRadioDefault1');
+                            const needDelivery = flexRadioDefault1.checked;
+                            
+                            
+                            console.log(typeof(convenientDateTime))
+                           
+                            const orderData = {
+                                        RequestDateString: convenientDateTime,
+                                        Description: description,
+                                        NeedDelivery: needDelivery
+                                    };
+                                    
+                            console.log(orderData);
+                            
+                            fetch('/profile/create_order', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(orderData)
+                            })
+                            .then(response => response.text())
+                            .then(data => {
+                                // Handle the response from the server
+                                console.log(data);
+                            })
+                            .catch(error => {
+                                // Handle any errors
+                                console.error(error);
+                            });
+                           
+                        });
+                    </script>
+                    </div>
+                </div> 
+            </div>
+
+
+            <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+            <script src="checkout.js"></script>
+
+  </form>

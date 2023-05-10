@@ -18,6 +18,7 @@ public class Order
     public string Description { get; set; } = null!;
     public bool NeedDelivery { get; set; }
     public decimal? Price { get; set; }
+    public string? Address { get; set; }
 
     public Order()
     {
@@ -31,5 +32,6 @@ public class Order
         DateOfIssue = null;
         Description = orderViewModel.Description;
         NeedDelivery = orderViewModel.NeedDelivery;
+        Address = orderViewModel.Address;
     }
 }

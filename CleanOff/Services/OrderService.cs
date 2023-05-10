@@ -53,4 +53,10 @@ public class OrderService
         order.OrderState = OrderState.OrderDenied;
         await _context.SaveChangesAsync();
     }
+    
+    public async Task ConfirmOrder(Order order)
+    {
+        order.OrderState = OrderState.OrderChecked;
+        await _context.SaveChangesAsync();
+    }
 }
