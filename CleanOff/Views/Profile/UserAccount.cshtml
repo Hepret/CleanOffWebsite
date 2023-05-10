@@ -49,7 +49,34 @@
   </form>
 
     <form id="orders" style="display:none">  @*Мои заказы*@
-      2
+
+        @if (Model.Orders.Count != 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Описание заказа</th>
+                        <th>Статус</th>
+                        <th>Дата создания</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Orders)
+                    {
+                        <tr>
+                            <td>@order.Description</td>
+                            <td>@order.OrderState</td>
+                            <td>@order.RequestDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h6>Пока заказов нет</h6>
+        }
   </form>
 
 <form id="make" class="needs-validation" novalidate style="display:none"> @*Создать заказ*@
@@ -83,6 +110,27 @@
                     <label for="convenient-datetime">Удобная дата и время</label>
                     <input type="datetime-local" class="form-control" id="convenient-datetime">
                 </div>
+                    <script>
+                        // Получаем текущую дату и время
+                        var now = new Date();
+
+                        // Конвертируем текущую дату и время в формат, ожидаемый календарем Bootstrap
+                        var formattedNow = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2) + 'T' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+
+                        // Находим элемент input по его идентификатору
+                        var input = document.getElementById('convenient-datetime');
+
+                        // Устанавливаем минимальное значение даты и времени
+                        input.min = formattedNow;
+
+                        // Обработчик события изменения значения поля выбора даты и времени
+                        input.addEventListener('input', function () {
+                            // Проверяем, если выбранная дата прошедшая, то сбрасываем значение поля
+                            if (this.value < formattedNow) {
+                                this.value = '';
+                            }
+                        });
+                    </script>
                 <hr class="my-4">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -190,33 +238,6 @@
 </form>
 
 
-@if (Model.Orders.Count != 0)
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Описание заказа</th>
-                <th>Статус</th>
-                <th>Дата создания</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var order in Model.Orders)
-            {
-                <tr>
-                    <td>@order.Description</td>
-                    <td>@order.OrderState</td>
-                    <td>@order.RequestDate</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <h6>Пока заказов нет</h6>
-}
    
 </body>
 </html>
