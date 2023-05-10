@@ -29,16 +29,6 @@
     padding-top: 20px;
 }
 
-.btn {
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
     .btn:focus {
         outline: none;
         box-shadow: none;
@@ -64,9 +54,6 @@
     padding: 0px 10px;
 }
 
-.btn-width {
-    width: 150px;
-}
 
 /*--------------------------------*/
 .bd-placeholder-img {

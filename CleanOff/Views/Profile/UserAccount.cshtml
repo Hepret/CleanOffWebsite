@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 @*    <div class="btn-group-vertical pt-5" role="group">
         <button onclick ="switchF1()" type="button" class="btn btn-outline-primary btn-width rounded-0"> Что происходит?</button>
         <button onclick ="switchF2()" type="button" class="btn btn-outline-primary rounded-0">Мои заказы</button>
@@ -201,9 +202,23 @@
 
   </form>
 <form id="profile" style="display:none"> @*Мой профиль*@
-    <button type="button" class="butexit logoutBtn">
-        ВЫЙТИ
-    </button>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.Name @Model.Surname</h5>
+                            <p class="card-text">
+                                <strong>Email:</strong> @Model.Email <br>
+                                <strong>Phone:</strong> @Model.Phone
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger logoutBtn mt-3">ВЫЙТИ</button>
+        </div>
     <script>
           const logoutBtn = document.getElementsByClassName('logoutBtn')[0];
           logoutBtn.addEventListener('click', (event) => {
