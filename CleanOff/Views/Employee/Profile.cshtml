@@ -1,0 +1,42 @@
+﻿@model CleanOff.Domain.Users.Employee
+
+@{
+    ViewBag.Title = "Профиль работника";
+    Layout = "_EmployeePanelLayout";
+}
+
+<h1>Профиль работника</h1>
+<div class="card my-3">
+    <div class="card-body">
+        <h5 class="card-title">Id Работника: @Model.EmployeeId</h5>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Имя</td>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <td>Фамилия</td>
+                    <td>@Model.Surname</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Model.Email</td>
+                </tr>
+                 <tr>
+                    <td>Phone</td>
+                    <td>@Model.Phone</td>
+                </tr>
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+
