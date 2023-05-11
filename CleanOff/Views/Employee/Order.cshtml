@@ -5,19 +5,30 @@
     Layout = "_EmployeePanelLayout";
 }
 
-<h1>Страница заказа</h1>
+<div class="container d-flex justify-content-center">
+    <div class="card mt-5 w-100" style="width: 400px;">
+        <div class="card-body">
+            <h1 class="card-title text-center">Страница заказа</h1>
 
-<h2>Информация о заказе:</h2>
-<h3>Номер заказа @Model.OrderId</h3>
-<h3>Статус заказа: @Model.OrderState</h3>
-<h3>Описани заказа:</h3>
-<h3>@Model.Description</h3>
+            <div class="mt-4">
+                <h2>Информация о заказе:</h2>
+                <h3>Номер заказа: @Model.OrderId</h3>
+                <h3>Статус заказа: @Model.OrderState</h3>
+                <h3>Описание заказа:</h3>
+                <p>@Model.Description</p>
+            </div>
 
-<h2>Информация о клиенте</h2>
-<h3>Имя: @Model.Client.Name</h3>
-<h3>Фамилия: @Model.Client.Surname</h3>
-<h3>Номер: @Model.Client.Phone</h3>
+            <div class="mt-4">
+                <h2>Информация о клиенте</h2>
+                <h3>Имя: @Model.Client.Name</h3>
+                <h3>Фамилия: @Model.Client.Surname</h3>
+                <h3>Номер: @Model.Client.Phone</h3>
+            </div>
 
-
-<button><a href="@Url.Action("CompleteOrder", new {orderId = Model.OrderId})">Заказ выполнен</a></button>
-<button><a href="@Url.Action("InProgressOrder", new {orderId = Model.OrderId})">Заказ в прогрессе</a></button>
+            <div class="text-center mt-4">
+                <button class="btn btn-primary"><a href="@Url.Action("CompleteOrder", new {orderId = Model.OrderId})" class="text-white">Заказ выполнен</a></button>
+                <button class="btn btn-primary"><a href="@Url.Action("InProgressOrder", new {orderId = Model.OrderId})" class="text-white">Заказ в прогрессе</a></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,38 +5,34 @@
     Layout = "_EmployeePanelLayout";
 }
 
-<h1>Профиль работника</h1>
-<div class="card my-3">
+<div class="d-flex justify-content-center">
+    <h1 class="mx-5">Профиль работника</h1>
+</div>
+<div class="card my-3 px-5 mx-5">
     <div class="card-body">
         <h5 class="card-title">Id Работника: @Model.EmployeeId</h5>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Field</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Имя</td>
-                    <td>@Model.Name</td>
-                </tr>
-                <tr>
-                    <td>Фамилия</td>
-                    <td>@Model.Surname</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>@Model.Email</td>
-                </tr>
-                 <tr>
-                    <td>Phone</td>
-                    <td>@Model.Phone</td>
-                </tr>
-            
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>Имя</th>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <th>Фамилия</th>
+                        <td>@Model.Surname</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <th>Телефон</th>
+                        <td>@Model.Phone</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
