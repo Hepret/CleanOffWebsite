@@ -4,6 +4,13 @@
     Layout = "_EmployeePanelLayout";
 }
 
+<div class="container">
+    <div class="text-center mt-5">
+        <h1>Заказы</h1>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 @if (Model.Count != 0)
 {
     <table class="table table-striped">
@@ -23,7 +30,7 @@
                 <td>@order.Description</td>
                 <td>@order.OrderState</td>
                 <td>@order.RequestDate</td>
-                <td><a href="@Url.Action("Order", values: new { orderId = order.OrderId })">Перейти к заказу</a></td>
+                                <td><a href="@Url.Action("Order", values: new { orderId = order.OrderId })" class="btn btn-primary">Перейти к заказу</a></td>
             </tr>
         }
         </tbody>
@@ -32,5 +39,8 @@
 }
 else
 {
-    <h2>Пока заказов нету</h2>
+                <p class="text-center mt-4">Пока заказов нет</p>
 }
+        </div>
+    </div>
+</div>
