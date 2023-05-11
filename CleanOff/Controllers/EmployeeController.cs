@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using CleanOff.Domain;
 using CleanOff.Domain.Users;
 using CleanOff.Domain.ViewModels;
 using CleanOff.Exceptions;
@@ -59,6 +58,13 @@ public class EmployeeController : Controller
         await Authenticate(employee);
         return RedirectToAction("Index");
     }
+    
+    [HttpGet("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
 
     [NonAction]
     async Task Authenticate(Employee employee)
@@ -66,11 +72,18 @@ public class EmployeeController : Controller
         var claimsPrincipals = EmployeeClaimsConverter.Convert(employee);
         await HttpContext.SignInAsync(claimsPrincipals);
     }
+    [NonAction]
+    public async Task<Employee> GetMe()
+    {
+        var employeeId = Guid.Parse(User.FindFirstValue("id") ?? throw new InvalidOperationException());
+        return (await _employeeManager.FindByIdAsync(employeeId))!;
+        
+    }
     #endregion
 
     #region Создание заказов
 
-    [HttpGet("create_order")]
+    [HttpGet("createOrder")]
     public IActionResult CreateOrder()
     {
         return View();
@@ -89,7 +102,7 @@ public class EmployeeController : Controller
     
     
     [HttpGet("order")]
-    public async Task<IActionResult> GetOrder(Guid orderId)
+    public async Task<IActionResult> Order(Guid orderId)
     {
         var order = await _orderService.GetOrderByIdAsync(orderId);
         if (order == null) BadRequest("Такого заказа не существует");
@@ -116,7 +129,7 @@ public class EmployeeController : Controller
         {
             var order = await _orderService.GetOrderByIdAsync(orderId);
             await _orderService.RejectOrderAsync(order);
-            return Ok("Заказ отменен");
+            return RedirectToAction("Index");
         }
         catch (Exception e)
         {
@@ -135,13 +148,19 @@ public class EmployeeController : Controller
         return View(order);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> UpdateAndConfirm(Order order)
+    [HttpPost("order/check/updateAndConfirm")]
+    public async Task<IActionResult> UpdateAndConfirm(Guid orderId, OrderViewModel orderViewModel)
     {
         try
-        {
+        {   
+            var order = await _orderService.GetOrderByIdAsync(orderId);
+            order.Employee = await GetMe();
+            order.Description = orderViewModel.Description;
+            order.Address = orderViewModel.Address;
+            order.Price = orderViewModel.Price;
+            order.NeedDelivery = orderViewModel.NeedDelivery;
             await _orderService.ConfirmOrder(order);
-            return Ok("Заказ подтвержден");
+            return RedirectToAction("Index");
         }
         catch (Exception e)
         {
@@ -150,14 +169,39 @@ public class EmployeeController : Controller
         
         
     }
-    #endregion
-
-    [NonAction]
-    public async Task<Employee> GetMe()
+    [HttpGet("ordersList")]
+    public async Task<IActionResult> GetOrders()
     {
-        var employeeId = Guid.Parse(User.FindFirstValue("id") ?? throw new InvalidOperationException());
-        return (await _employeeManager.FindByIdAsync(employeeId))!;
-        
+        var orders = await _orderService.GetCheckedAndInProgressOrdersAsync();
+        return View(orders);
     }
+    #endregion
     
+
+
+    #region Профиль работника
+
+    [HttpGet("profile")]
+    public async Task<IActionResult> Profile()
+    {
+        var employee = await GetMe();
+        return View(employee);
+    }
+
+    #endregion
+    [HttpGet("completeOrder")]
+    public async Task<IActionResult> CompleteOrder(Guid orderId)
+    {
+        var order = await _orderService.GetOrderByIdAsync(orderId);
+        await _orderService.CompleteOrderAsync(order);
+        return RedirectToAction("GetOrders");
+    }
+
+    [HttpGet("orderInProgress")]
+    public async Task<IActionResult> InProgressOrder(Guid orderId)
+    {
+        var order = await _orderService.GetOrderByIdAsync(orderId);
+        await _orderService.InProgressOrder(order);
+        return RedirectToAction("Order", routeValues: new { orderId = orderId });
+    }
 }

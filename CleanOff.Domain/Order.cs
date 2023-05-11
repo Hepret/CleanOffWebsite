@@ -33,5 +33,6 @@ public class Order
         Description = orderViewModel.Description;
         NeedDelivery = orderViewModel.NeedDelivery;
         Address = orderViewModel.Address;
+        Price = orderViewModel.Price;
     }
 }

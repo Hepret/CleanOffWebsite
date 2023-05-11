@@ -59,4 +59,33 @@ public class OrderService
         order.OrderState = OrderState.OrderChecked;
         await _context.SaveChangesAsync();
     }
+
+    public async Task<List<Order>> GetCheckedAndInProgressOrdersAsync()
+    {
+        var orders = await _context.Orders.Where(order =>
+            order.OrderState == OrderState.OrderChecked || order.OrderState == OrderState.OrderInProgress).ToListAsync();
+        return orders;
+    }
+
+    public async Task<List<Order>> GetCompleteOrdersAsync()
+    {
+        var orders = await _context.Orders.Where(order => order.OrderState == OrderState.OrderComplete).ToListAsync();
+        return orders;
+    }
+
+
+    public async Task CompleteOrderAsync(Order order)
+    {
+        order.DateOfIssue = DateTime.Now.ToUniversalTime();
+        order.OrderState = OrderState.OrderComplete;
+        await _context.SaveChangesAsync();
+    }
+    
+    public async Task InProgressOrder(Order order)
+    {
+        order.OrderState = OrderState.OrderInProgress;
+        await _context.SaveChangesAsync();
+    }
+    
+    
 }
