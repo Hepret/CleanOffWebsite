@@ -103,7 +103,23 @@
                 <input type="password" name="password" class="form-control border-primary passwordRegisterInput" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Пароль</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary mt-3 registerBtn" type="button">Зарегестрироваться</button>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input id="privacyCheckbox" type="checkbox" value="privatedata"> Согласен(а) на обработку личных данных <br> "В соответствии с законом об обработке персональных данных"
+                    </label>
+                </div>
+                <button id="registerButton" class="w-100 btn btn-lg btn-primary mt-3 registerBtn" type="button" disabled>Зарегистрироваться</button>
+
+                <script>
+                    // Получаем ссылки на чекбокс и кнопку
+                    const privacyCheckbox = document.getElementById('privacyCheckbox');
+                    const registerButton = document.getElementById('registerButton');
+
+                    // Добавляем обработчик события для изменения состояния кнопки
+                    privacyCheckbox.addEventListener('change', function () {
+                        registerButton.disabled = !privacyCheckbox.checked;
+                    });
+                </script>
             <button onclick="switchFormsback()" type="button" class="btn btn-outline-secondary mt-3">Вспомнил, я всё таки смешарик</button>
         </div>
     </form>
