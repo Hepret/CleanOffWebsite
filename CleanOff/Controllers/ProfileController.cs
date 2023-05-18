@@ -52,7 +52,7 @@ public class ProfileController: Controller
 
     
 
-    [HttpPost("create_order")]
+    [HttpPost("createOrder")]
     public async Task<IActionResult> CreateOrder(OrderViewModel orderViewModel)
     {
         var date = await Request.ReadFromJsonAsync<OrderViewModel>();
