@@ -12,7 +12,7 @@
 <main class="form-signin w-100 m-auto">
     <form id="login">
         <div>
-            <h1 class="h3 mb-3 fw-normal">Вы уже смешарик?</h1>
+            <h1 class="h3 mb-3 fw-normal">Вы уже зарегестрированы?</h1>
 
             <div class="form-floating">
                 <input name="email" type="email" class="form-control mb-3 border-primary loginEmailInput" id="floatingInputLogin" placeholder="name@example.com">
@@ -34,8 +34,7 @@
                 Войти
             </button>
 
-            @* TODO вот пример как делать fetch надо будет это сделать цивильно *@
-            <script>
+             <script>
                 let loginBtn = document.getElementsByClassName("submitLoginBtn")[0];
                 loginBtn.addEventListener("click", async function (event) {
                     event.preventDefault();
@@ -67,21 +66,21 @@
                 
             </script>
 
-            <button onclick="switchForms()" class="w-100 btn btn-lg btn-outline-primary mt-3 bg-white new-user" type="button">Нет, я новенький</button>
+            <button onclick="switchForms()" class="w-100 btn btn-lg btn-outline-primary mt-3 bg-white new-user" type="button">Нет, хочу зарегистрироваться</button>
 
                 <a class="w-100 btn btn-link mt-5" href="../Admin/Login" @*type="submit"*@>
-                    Я вообще тут администратор (удалить)
+                    Я  администратор (будет удалено)
                 </a>
 
                 <a class="w-100 btn btn-link mt-5" href="../Employee/Login" @*type="submit"*@>
-                    Я вообще тут работник (удалить)
+                    Я  работник (будет удалено)
                 </a>
         </div>
     </form>
 
     <form id="registration" style="display: none;">
         <div>
-            <h1 class="h3 mb-3 fw-normal">Стань смешариком прямо сейчас</h1>
+            <h1 class="h3 mb-3 fw-normal">Стань нашим клиентом прямо сейчас</h1>
 
             <div class="form-floating">
                 <input type="text" name="name" aria-label="Имя" class="form-control border-primary  w-100 rounded-1 mt-1 nameRegisterInput">
@@ -120,7 +119,7 @@
                         registerButton.disabled = !privacyCheckbox.checked;
                     });
                 </script>
-            <button onclick="switchFormsback()" type="button" class="btn btn-outline-secondary mt-3">Вспомнил, я всё таки смешарик</button>
+            <button onclick="switchFormsback()" type="button" class="btn btn-outline-secondary mt-3">Вспомнил, я уже клиент</button>
         </div>
     </form>
     
